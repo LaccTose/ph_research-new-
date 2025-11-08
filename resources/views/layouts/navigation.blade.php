@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}">
-                        <!--อาจจะแก้เป็น UMSC หรือทำโลโก้เอง-->
+                        <!--logo สนอ.-->
                         <img src="{{ asset('images/logo3.png') }}" alt="logo" class="object-contain w-auto h-9" />
                     </a>
                 </div>
@@ -20,6 +20,15 @@
                     <x-nav-link :href="route('services')" :active="request()->routeIs('services')">
                         {{ __('Service') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('calendar.index')" :active="request()->routeIs('calendar.index')">
+                        {{ __('Calendar') }}
+                    </x-nav-link>
+                    
+                    {{--<x-nav-link :href="route('bookings.create')" :active="request()->routeIs('bookings.create')">
+                        {{ __('Booking') }}
+                    </x-nav-link>--}}
+                    
                 </div>
             </div>
 

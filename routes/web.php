@@ -6,6 +6,7 @@ use App\Http\Controllers\UMSCReportController;
 use App\Models\HealthCenter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CalendarController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,3 +34,10 @@ Route::get('/dashboard', [HealthCenterController::class, 'dashboard'])
     ->name('dashboard');
 
 Route::get('/services', [ServiceController::class, 'index'])->name('services');
+
+Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');//calendar
+
+Route::get('/', function () {
+    $events = App\Models\Event::all(); 
+    return view('index', compact('events'));
+});
