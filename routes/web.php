@@ -7,6 +7,7 @@ use App\Models\HealthCenter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\BookingController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/bookings/create', [BookingController::class, 'create'])->name('bookings.create');
+Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 
 require __DIR__.'/auth.php';
 
@@ -37,7 +40,7 @@ Route::get('/services', [ServiceController::class, 'index'])->name('services');
 
 Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');//calendar
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     $events = App\Models\Event::all(); 
     return view('index', compact('events'));
-});
+});*/

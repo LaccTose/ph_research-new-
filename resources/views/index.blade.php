@@ -22,7 +22,7 @@
   			    </div> -->
 
                 <!--filter-->
-                <div class="w-1/4 h-full">
+                <div class="w-1/4 md:h-full">
                     <div class="h-full p-4 font-sans">
                         <div id="dropdown" class="z-10 w-56 h-full p-3 bg-white rounded-lg shadow dark:bg-gray-700">
                             <h6 class="mb-3 text-base font-bold text-center text-gray-900 dark:text-white">
@@ -31,7 +31,7 @@
                             <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
                                 <li class="flex items-center">
                                     <input id="apple" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500"/>
 
                                     <label for="apple" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             ผู้อำนวยการสำนักงาน/กอง
@@ -46,12 +46,115 @@
                                         ผู้อำนวยการศูนย์บริการสาธารณสุข
                                     </label>
                                 </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        แพทย์
+                                    </label>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        ทันตแพทย์
+                                    </label>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        นายสัตวแพทย์
+                                    </label>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        เภสัชกร
+                                    </label>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        พยาบาลวิชาชีพ
+                                    </label>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        นักวิชาการสาธารณสุข
+                                    </label>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        นักวิชาการสุขาภิบาล
+                                    </label>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        นักสังคมสงเคราะห์
+                                    </label>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        นักรังสีการแพทย์
+                                    </label>
+                                </li>
+
+                                <li class="flex items-center">
+                                    <input id="fitbit" type="checkbox" value=""
+                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+
+                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        นักจิตวิทยา
+                                    </label>
+                                </li>
                         </div>
                     </div>
+                    <div class="h-full p-4">
+                        {{--<button type="button"
+                            class="w-56 px-2 py-2 font-semibold text-white bg-green-700 border rounded-lg shadow-sm hover:bg-green-600"
+                            @click="window.location.href='{{ route('bookings.create') }}'">
+                            บันทึกข้อมูลการจัดประชุม
+                        </button>--}}
+                         <a href="{{ route('bookings.create') }}" 
+                            class="w-56 px-16 py-3 font-semibold text-white bg-green-700 border rounded-lg shadow-sm hover:bg-green-600">เพิ่มการจอง</a>
+                         <form action="{{ route('bookings.store') }}" method="POST">
+
+                    </div>
+                   
                 </div>
+                
 
             <!--button-->
-                <div class="w-3/4 h-full">
+                <div class="w-full md:w-3/4">
                     <div class="h-full overflow-hidden bg-white rounded-lg shadow">
                         <div class="flex items-center justify-between px-6 py-2 border-b">
                             <div class="text-lg">
