@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ReportsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,3 +45,12 @@ Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.in
     $events = App\Models\Event::all(); 
     return view('index', compact('events'));
 });*/
+
+Route::prefix('report')->name('report.')->group(function () {
+    Route::get('/', [ReportsController::class, 'index'])->name('index');
+    Route::get('/create', [ReportsController::class, 'create'])->name('create');
+    Route::post('/', [ReportsController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [ReportsController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [ReportsController::class, 'update'])->name('update');
+    Route::delete('/{id}', [ReportsController::class, 'destroy'])->name('destroy'); 
+});
