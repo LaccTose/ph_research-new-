@@ -16,22 +16,22 @@
     <div class="antialiased font-soa-chingcha">
         <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
             <div class="container py-2 mx-auto">
-                <div class="flex items-stretch gap-1.5">
+                <div class="flex flex-col md:flex-row md:items-stretch gap-3 md:gap-1.5">
                 <!-- <div class="mb-4 text-xl font-bold text-gray-800">
     			    Schedule Tasks
   			    </div> -->
 
                 <!--filter-->
-                <div class="w-1/4 md:h-full">
-                    <div class="h-full p-4 font-sans">
-                        <div id="dropdown" class="z-10 w-56 h-full p-3 bg-white rounded-lg shadow dark:bg-gray-700">
+                <div class="flex flex-col w-full md:w-1/4 md:h-auto">
+                    <div class="h-full p-4">
+                        <div id="dropdown" class="flex flex-col flex-1 p-4 bg-white rounded-lg shadow">
                             <h6 class="mb-3 text-base font-bold text-center text-gray-900 dark:text-white">
                                 กลุ่มเป้าหมาย
                             </h6>
                             <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
                                 <li class="flex items-center">
                                     <input id="apple" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500"/>
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500"/>
 
                                     <label for="apple" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             ผู้อำนวยการสำนักงาน/กอง
@@ -40,7 +40,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         ผู้อำนวยการศูนย์บริการสาธารณสุข
@@ -49,7 +49,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         แพทย์
@@ -58,7 +58,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         ทันตแพทย์
@@ -67,7 +67,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         นายสัตวแพทย์
@@ -76,7 +76,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         เภสัชกร
@@ -85,7 +85,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         พยาบาลวิชาชีพ
@@ -94,7 +94,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         นักวิชาการสาธารณสุข
@@ -103,7 +103,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         นักวิชาการสุขาภิบาล
@@ -112,7 +112,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         นักสังคมสงเคราะห์
@@ -121,7 +121,7 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         นักรังสีการแพทย์
@@ -130,37 +130,36 @@
 
                                 <li class="flex items-center">
                                     <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
                                     <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                         นักจิตวิทยา
                                     </label>
                                 </li>
                         </div>
-                    </div>
-                    <div class="h-full p-4">
+                        <div class="flex flex-col">
                         {{--<button type="button"
                             class="w-56 px-2 py-2 font-semibold text-white bg-green-700 border rounded-lg shadow-sm hover:bg-green-600"
                             @click="window.location.href='{{ route('bookings.create') }}'">
                             บันทึกข้อมูลการจัดประชุม
                         </button>--}}
-                         <a href="{{ route('bookings.create') }}" 
-                            class="w-56 px-16 py-3 font-semibold text-white bg-green-700 border rounded-lg shadow-sm hover:bg-green-600">เพิ่มการจอง</a>
-                         <form action="{{ route('bookings.store') }}" method="POST">
-
+                        {{--<form action="{{ route('bookings.store') }}" method="POST">--}}
+                        <a href="{{ route('bookings.create') }}"
+                            class="w-full py-2 mt-4 font-semibold text-center text-white bg-green-600 border rounded-lg shadow-sm md:w-full hover:bg-green-700">
+                            เพิ่มการจอง</a>
+                    </div>          
                     </div>
-                   
+                            
                 </div>
                 
-
             <!--button-->
-                <div class="w-full md:w-3/4">
+                <div class="flex-1 p-4">
                     <div class="h-full overflow-hidden bg-white rounded-lg shadow">
                         <div class="flex items-center justify-between px-6 py-2 border-b">
                             <div class="text-lg">
                                 <button type="button"
-                                    class="px-4 py-2 font-semibold text-gray-700 bg-transparent border border-gray-200 rounded hover:bg-gray-200 hover:text-gray-500 hover:border-transparent"
-                                    @click="goToToday()">วันนี้
+                                    class="px-4 py-2 text-lg font-semibold text-gray-700 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 "
+                                    @click="goToToday(); initDate()">วันนี้
                                 </button>
                             </div>
 
@@ -394,11 +393,11 @@
                         let today = new Date();
                         this.month = today.getMonth();
                         this.year = today.getFullYear();
-                        this.displayYear = this.year + 543; // ถ้าต้องการพุทธศักราช
+                        this.displayYear = this.year + 543;
                         // this.datepickerValue = toISO(new Date(this.year, this.month, today.getDate())); // ถ้าจะใช้
                     },
 
-                    // ปรับ prev/next ให้ยอมข้ามปี และอัพเดต displayYear เสมอ
+                    // ปรับ prev/next ให้ยอมข้ามปี และอัพเดต displayYear 
                     prevMonth() {
                         this.month--;
                         if (this.month < 0) {

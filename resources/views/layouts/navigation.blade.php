@@ -70,7 +70,7 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="text-gray-500 hover:text-gray-700">Login</a>
+                    <a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-700">Login</a>
                 @endauth
             </div>
 
@@ -97,6 +97,16 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('services')" :active="request()->routeIs('services')">
+                {{ __('Service') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('calendar.index')" :active="request()->routeIs('calendar.index')">
+                {{ __('Calendar') }}
+            </x-responsive-nav-link>
+        </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -106,7 +116,7 @@
                     <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
                 @endauth
                 @guest
-                    <a href="{{ route('login') }}" class="text-gray-500 hover:text-gray-700">Login</a>
+                    <a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-700">Login</a>
                 @endguest
             </div>
 
