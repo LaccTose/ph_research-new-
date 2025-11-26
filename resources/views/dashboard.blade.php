@@ -12,11 +12,19 @@
                 {{ __('Dashboard') }}
 
                 <div class="p-6">
-                    <a href="{{ route('report.index') }}"
+                    <a href="{{ route('umsc_report.index') }}"
                         class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
-                        +++
+                        ศูนย์สนับสนุนบริการสุขภาพเวชศาสตร์เขตเมือง
                     </a>
                 </div>
+
+                <div class="p-6">
+                    <a href="{{ route('smc_report.index') }}"
+                        class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
+                        คลินิกพิเศษรับส่งต่อ
+                    </a>
+                </div>
+
 
             </div>
 

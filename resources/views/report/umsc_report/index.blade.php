@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="p-6">
-        <a href="{{ route('report.create') }}"
+        <a href="{{ route('umsc_report.create') }}"
            class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
            + เพิ่มรายงานใหม่
         </a>

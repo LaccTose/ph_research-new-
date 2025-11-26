@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HealthCenterController;
 use App\Http\Controllers\UMSCReportController;
+use App\Http\Controllers\SMCReportController;
 use App\Models\HealthCenter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
@@ -19,10 +20,10 @@ Route::get('/dashboard', [HealthCenterController::class, 'dashboard'])
     ->name('dashboard');
 
 //ทำให้หน้าบันทึกเป็น private (redirect ไปหน้า login)
-Route::middleware('auth')->group(function () {
+/*Route::middleware('auth')->group(function () {
     Route::get('/umsc-report/create', [UMSCReportController::class, 'create']);
     Route::get('/umsc-report', [UMSCReportController::class, 'store']);
-});
+});*/
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -46,11 +47,10 @@ Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.in
     return view('index', compact('events'));
 });*/
 
-Route::prefix('report')->name('report.')->group(function () {
-    Route::get('/', [ReportsController::class, 'index'])->name('index');
-    Route::get('/create', [ReportsController::class, 'create'])->name('create');
-    Route::post('/', [ReportsController::class, 'store'])->name('store');
-    Route::get('/{id}/edit', [ReportsController::class, 'edit'])->name('edit');
-    Route::put('/{id}', [ReportsController::class, 'update'])->name('update');
-    Route::delete('/{id}', [ReportsController::class, 'destroy'])->name('destroy'); 
+Route::prefix('report')->group(function () {
+    Route::resource('umsc_report', UMSCReportController::class);
+});
+
+Route::prefix('report')->group(function () {
+    Route::resource('smc_report', SMCReportController::class);
 });

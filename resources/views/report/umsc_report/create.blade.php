@@ -431,7 +431,7 @@
                 </fieldset>
 
                 <div class="flex items-center justify-between mt-4">
-                    <a href="{{ route('report.index') }}"
+                    <a href="{{ route('umsc_report.create') }}"
                         class="flex items-center font-medium text-green-700 hover:text-green-800">
                         <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
                             fill="currentColor">
