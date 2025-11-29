@@ -5,9 +5,9 @@
         </h2>
     </x-slot>
     <div class="p-6">
-        คลินิกพิเศษรับส่งต่อ
+        การดูแลรักษาและสังเกตอาการผู้ป่วยในศูนย์บริการสาธารณสุข (ศบส.พลัส)
        <p class="mt-4">
-         <a href="{{ route('smc_report.create') }}"
+         <a href="{{ route('phcp_report.create') }}"
            class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
            + เพิ่มรายงานใหม่
         </a>

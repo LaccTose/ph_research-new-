@@ -95,7 +95,7 @@
                         </div>
                         <div class="col-span-1">
                             <label for="healthConsultPeople" class="block mb-1 text-sm text-gray-700">
-                                1.การให้คำปรึกษาปัญหาสุขภาพ และการให้ข้อมูลสุขภาพฯ</label>
+                                1. การให้คำปรึกษาปัญหาสุขภาพ และการให้ข้อมูลสุขภาพฯ</label>
                             <div class="flex gap-2">
                                 <input type="number" id="healthConsultPeople" name="healthConsultPeople" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
@@ -107,7 +107,7 @@
                         </div>
                         <div class="col-span-1">
                             <label for="serviceAdvicePeople" class="block mb-1 text-sm text-gray-700">
-                                2.การให้คำแนะนำบริการของศูนย์บริการสาธารณสุข</label>
+                                2. การให้คำแนะนำบริการของศูนย์บริการสาธารณสุข</label>
                             <div class="flex gap-2">
                                 <input type="number" id="serviceAdvicePeople" name="serviceAdvicePeople" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
@@ -119,7 +119,7 @@
                         </div>
                         <div class="col-span-1">
                             <label for="appointmentPeople" class="block mb-1 text-sm text-gray-700">
-                                3.การนัดหมายบริการสุขภาพ</label>
+                                3. การนัดหมายบริการสุขภาพ</label>
                             <div class="flex gap-2">
                                 <input type="number" id="appointmentPeople" name="appointmentPeople" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col-span-1">
                             <label for="referralCoordPeople" class="block mb-1 text-sm text-gray-700">
-                                4.การประสานส่งต่อผู้ป่วย</label>
+                                4. การประสานส่งต่อผู้ป่วย</label>
                             <div class="flex gap-2">
                                 <input type="number" id="referralCoordPeople" name="referralCoordPeople"
                                     min="0"
@@ -145,7 +145,7 @@
                         </div>
                         <div class="col-span-1">
                             <label for="homeVisitPeople" class="block mb-1 text-sm text-gray-700">
-                                5.การประสานการให้บริการเยี่ยมบ้าน</label>
+                                5. การประสานการให้บริการเยี่ยมบ้าน</label>
                             <div class="flex gap-2">
                                 <input type="number" id="homeVisitPeople" name="homeVisitPeople" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
@@ -157,7 +157,7 @@
                         </div>
                         <div class="col-span-1">
                             <label for="disabilityCertPeople" class="block mb-1 text-sm text-gray-700">
-                                6.การออกเอกสารรับรองความพิการทางการเคลื่อนไหวหรือทางร่างกาย</label>
+                                6. การออกเอกสารรับรองความพิการทางการเคลื่อนไหวหรือทางร่างกาย</label>
                             <div class="flex gap-2">
                                 <input type="number" id="healthConsultPeople" name="healthConsultPeople"
                                     min="0"
@@ -171,7 +171,7 @@
                         </div>
                         <div class="col-span-1">
                             <label for="supportRequestPeople" class="block mb-1 text-sm text-gray-700">
-                                7.การขอรับการสนับสนุนอุปกรณ์ช่วยเหลือทางการเคลื่อนไหว/วัสดุทางการแพทย์และสาธารณสุข</label>
+                                7. การขอรับการสนับสนุนอุปกรณ์ช่วยเหลือทางการเคลื่อนไหว/วัสดุทางการแพทย์และสาธารณสุข</label>
                             <div class="flex gap-2">
                                 <input type="number" id="supportRequestPeople" name="supportRequestPeople"
                                     min="0"
@@ -185,7 +185,7 @@
                         </div>
                         <div class="col-span-1">
                             <label for="telehealthPeople" class="block mb-1 text-sm text-gray-700">
-                                8.Telehealth</label>
+                                8. Telehealth</label>
                             <div class="flex gap-2">
                                 <input type="number" id="telehealthPeople" name="telehealthPeople" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
@@ -431,7 +431,7 @@
                 </fieldset>
 
                 <div class="flex items-center justify-between mt-4">
-                    <a href="{{ route('umsc_report.create') }}"
+                    <a href="{{ route('umsc_report.index') }}"
                         class="flex items-center font-medium text-green-700 hover:text-green-800">
                         <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
                             fill="currentColor">

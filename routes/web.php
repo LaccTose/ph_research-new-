@@ -4,11 +4,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HealthCenterController;
 use App\Http\Controllers\UMSCReportController;
 use App\Http\Controllers\SMCReportController;
+use App\Http\Controllers\PCUReportController;
+use App\Http\Controllers\PHCPReportController;
 use App\Models\HealthCenter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\BookingController;
+
 use App\Http\Controllers\ReportsController;
 
 Route::get('/', function () {
@@ -54,3 +57,16 @@ Route::prefix('report')->group(function () {
 Route::prefix('report')->group(function () {
     Route::resource('smc_report', SMCReportController::class);
 });
+
+Route::prefix('report')->group(function () {
+    Route::resource('pcu_report', PCUReportController::class);
+});
+
+Route::prefix('report')->group(function () {
+    Route::resource('phcp_report', PHCPReportController::class);
+});
+
+Route::get('/test', function () {
+    return view('test');
+});
+
