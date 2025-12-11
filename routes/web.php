@@ -6,67 +6,95 @@ use App\Http\Controllers\UMSCReportController;
 use App\Http\Controllers\SMCReportController;
 use App\Http\Controllers\PCUReportController;
 use App\Http\Controllers\PHCPReportController;
-use App\Models\HealthCenter;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\BookingController;
+use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ReportsController;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-//healtecentercontroller ทำให้ dashboard เป็น public
-Route::get('/dashboard', [HealthCenterController::class, 'dashboard'])
-    ->name('dashboard');
-
-//ทำให้หน้าบันทึกเป็น private (redirect ไปหน้า login)
+/*
+|--------------------------------------------------------------------------
+| Authentication Routes
+|--------------------------------------------------------------------------
+*/
 /*Route::middleware('auth')->group(function () {
-    Route::get('/umsc-report/create', [UMSCReportController::class, 'create']);
-    Route::get('/umsc-report', [UMSCReportController::class, 'store']);
-});*/
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-Route::get('/bookings/create', [BookingController::class, 'create'])->name('bookings.create');
-Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+    Route::get('/profile', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
+});*/
 
 require __DIR__.'/auth.php';
 
-Route::get('/dashboard', [HealthCenterController::class, 'dashboard'])
-    ->name('dashboard');
 
-Route::get('/services', [ServiceController::class, 'index'])->name('services');
+/*
+|--------------------------------------------------------------------------
+| PRIMARY (งานปฐมภูมิ)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('primary')->group(function () {
 
-Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');//calendar
+    Route::get('/dashboard', [HealthCenterController::class, 'dashboard'])
+        ->name('dashboard');
 
-/*Route::get('/', function () {
-    $events = App\Models\Event::all(); 
-    return view('index', compact('events'));
-});*/
+    Route::get('/services', [ServiceController::class, 'index'])
+        ->name('services');
 
-Route::prefix('report')->group(function () {
-    Route::resource('umsc_report', UMSCReportController::class);
+    Route::prefix('report')->group(function () {
+        Route::resource('umsc_report', UMSCReportController::class);
+        Route::resource('smc_report', SMCReportController::class);
+        Route::resource('pcu_report', PCUReportController::class);
+        Route::resource('phcp_report', PHCPReportController::class);
+    });
 });
 
-Route::prefix('report')->group(function () {
-    Route::resource('smc_report', SMCReportController::class);
+
+/*
+|--------------------------------------------------------------------------
+| RESEARCH (งานวิจัย)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('research')->group(function () {
+    // ยังไม่เพิ่ม
 });
 
-Route::prefix('report')->group(function () {
-    Route::resource('pcu_report', PCUReportController::class);
+
+/*
+|--------------------------------------------------------------------------
+| CALENDAR (ระบบจองห้องประชุม)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('calendar')->group(function () {
+
+    Route::get('/', [CalendarController::class, 'index'])
+        ->name('calendar.index');
+
+    // ใช้ resource เฉพาะ create/store/index
+    Route::get('/booking', [BookingController::class, 'index'])
+        ->name('booking.index');
+
+    Route::get('/booking/create', [BookingController::class, 'create'])
+        ->name('booking.create');
+
+    Route::post('/booking', [BookingController::class, 'store'])
+        ->name('booking.store');
 });
 
-Route::prefix('report')->group(function () {
-    Route::resource('phcp_report', PHCPReportController::class);
-});
 
-Route::get('/test', function () {
-    return view('test');
-});
+/*
+|--------------------------------------------------------------------------
+| HOME PAGE (หน้าหลัก)
+|--------------------------------------------------------------------------
+*/
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
+
+Route::get('/profile', function () {
+    return 'profile page';
+})->name('profile.edit');

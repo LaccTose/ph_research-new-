@@ -8,12 +8,12 @@ class UMSCReportController extends Controller
 {
     public function index()
     {
-        return view('report.umsc_report.index');
+        return view('primary.report.umsc_report.index');
     }
 
     public function create()
     {
-        return view('report.umsc_report.create');
+        return view('primary.report.umsc_report.create');
     }
 
     public function store(Request $request)

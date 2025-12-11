@@ -12,7 +12,7 @@ class PHCPReportController extends Controller
      */
     public function index()
     {
-        return view('report.phcp_report.index');
+        return view('primary.report.phcp_report.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class PHCPReportController extends Controller
      */
     public function create()
     {
-        return view('report.phcp_report.create');
+        return view('primary.report.phcp_report.create');
     }
     /**
      * Store a newly created resource in storage.

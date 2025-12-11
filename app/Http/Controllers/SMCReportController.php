@@ -11,7 +11,7 @@ class SMCReportController extends Controller
      */
     public function index()
     {
-        return view('report.smc_report.index');
+        return view('primary.report.smc_report.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class SMCReportController extends Controller
      */
     public function create()
     {
-        return view('report.smc_report.create');
+        return view('primary.report.smc_report.create');
     }
 
     /**

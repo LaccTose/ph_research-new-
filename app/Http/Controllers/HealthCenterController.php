@@ -14,6 +14,6 @@ class HealthCenterController extends Controller
         $totalReports = UMSCReport::count();
         $recentReports = UMSCReport::latest()->take(10)->get();
 
-        return view('dashboard', compact('totalCenters', 'totalReports', 'recentReports'));
+        return view('primary.dashboard.dashboard', compact('totalCenters', 'totalReports', 'recentReports'));
     }
 }

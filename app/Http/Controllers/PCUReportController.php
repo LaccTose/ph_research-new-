@@ -12,7 +12,7 @@ class PCUReportController extends Controller
      */
     public function index()
     {
-        return view('report.pcu_report.index');
+        return view('primary.report.pcu_report.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class PCUReportController extends Controller
      */
     public function create()
     {
-        return view('report.pcu_report.create');
+        return view('primary.report.pcu_report.create');
     }
 
     /**

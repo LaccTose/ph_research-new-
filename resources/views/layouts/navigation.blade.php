@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ url('primary/dashboard') }}">
                         <!--logo สนอ.-->
                         <img src="{{ asset('images/logo3.png') }}" alt="logo" class="object-contain w-auto h-9" />
                     </a>
@@ -121,9 +121,14 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
+                @if (Route::has('profile.edit'))
+                    <div class="mt-3 space-y-1">
+                        <x-responsive-nav-link :href="route('profile.edit')">
+                            {{ __('Profile') }}
+                        </x-responsive-nav-link>
+                    </div>
+                @endif
+
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

@@ -63,52 +63,78 @@
                 </fieldset>
 
                 
-               <!-- Section 2: จำนวนผู้รับบริการ -->
+               <!-- Section 2: การตรวจโรคทั่วไป -->
                 <fieldset class="p-6 mb-8 bg-white border-t-4 border-green-700 rounded-lg shadow-sm ">
                     <legend class="px-4 text-xl font-bold text-green-800">การตรวจโรคทั่วไป (OPD)</legend>
                     
-                    <div class="mt-4 space-y-4">
-                        <div class="flex flex-col">
-                            <label for="serviceAdvicePeople" class="block mb-1 text-sm text-gray-700">
+                    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-4">
+                        <div class="col-span-1">
+                            <label for="TotalPeople" class="block mb-1 text-sm text-gray-700">
+                                ผู้รับบริการทั้งหมด
+                            </label>
+                            <div class="flex space-x-2">
+                                <input type="number" id="allUser" name="allUser" min="0" value="0"
+                                    class="w-1/2 p-2 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
+                                    readonly>
+                                <input type="number" id="allUserTimes" name="allUserTimes" min="0" value="0"
+                                    class="w-1/2 p-2 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
+                                    readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-span-1">
+                            <label for="GeneralMedicalExam" class="block mb-1 text-sm text-gray-700">
                                 ตรวจโรคทั่วไป
                             </label>
                             <div class="flex gap-2">
-                                <input type="text" id="serviceAdvicePeople" name="serviceAdvicePeople" min="0"
+                                <input type="number" id="GeneralMedicalExam" name="GeneralMedicalExam" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                     placeholder="คน">
-                                <input type="number" id="serviceAdvicePeople" name="serviceAdvicePeople" min="0"
+                                <input type="number" id="GeneralMedicalExam" name="GeneralMedicalExam" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                     placeholder="ครั้ง">
-                                    
                             </div>
                         </div>
-                        
-                        <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
-                            <div class="flex flex-col">
-                                <label class="block mb-1 text-sm text-gray-700">
-                                    จำหน่ายกลับบ้าน
-                                </label>
-                                <input
-                                    type="number"
-                                    name="tele_smc_to_smc"
-                                    min="0"
-                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
+
+                        <div class="col-span-1">
+                            <label for="DischargedHome" class="block mb-1 text-sm text-gray-700">
+                                จำหน่ายกลับบ้าน
+                            </label>
+                            <div class="flex gap-2">
+                                <input type="number" id="DischargedHome" name="DischargedHome" min="0"
+                                    class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm line-sum-source-people focus:ring-green-600 focus:border-green-600"
+                                    placeholder="คน">
+                                <input type="number" id="DischargedHome" name="DischargedHome" min="0"
+                                    class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm line-sum-source-times focus:ring-green-600 focus:border-green-600"
                                     placeholder="ครั้ง">
                             </div>
+                        </div>
 
-                            <div class="flex flex-col">
-                                <label class="block mb-1 text-sm text-gray-700">
-                                    ส่งต่อเพื่อรับการรักษาเพิ่มเติม
-                                </label>
-                                <input
-                                    type="number"
-                                    name="tele_smc_to_hospital"
-                                    min="0"
-                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
-                                    placeholder="ครั้ง"
-                                >
+                        <div class="col-span-1">
+                            <label for="Referred" class="block mb-1 text-sm text-gray-700">
+                                ส่งต่อเพื่อรับการรักษาเพิ่มเติม
+                            </label>
+                            <div class="flex gap-2">
+                                <input type="number" id="Referred" name="Referred" min="0"
+                                    class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm line-sum-source-people focus:ring-green-600 focus:border-green-600"
+                                    placeholder="คน">
+                                <input type="number" id="Referred" name="Referred" min="0"
+                                    class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm line-sum-source-times focus:ring-green-600 focus:border-green-600"
+                                    placeholder="ครั้ง">
                             </div>
                         </div>
+                            
+                        <div class="col-span-1">
+                            <label for="ReferredDetails" class="block mb-1 text-sm text-gray-700">
+                                รายละเอียดการส่งต่อ
+                            </label>
+                            <div class="relative w-full min-w-[200px]">
+                                <textarea class="h-full min-h-[100px] w-full resize-none border-gray-300 px-3 py-2 text-sm text-gray-700 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
+                                placeholder="รายละเอียดการส่งต่อเพิ่มเติม" id="RefferedDetails">{{ trim(old('referral_details')) }}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
                 </fieldset>
                     
                 <fieldset class="p-6 mb-8 bg-white border-t-4 border-green-700 rounded-lg shadow-sm ">
@@ -116,42 +142,42 @@
                     
                     <div class="mt-4 space-y-4">
                         <div class="flex flex-col">
-                            <label for="serviceAdvicePeople" class="block mb-1 text-sm text-gray-700">
+                            <label for="vaccination" class="block mb-1 text-sm text-gray-700">
                                 ฉีดวัคซีน (PP)
                             </label>
                             <div class="flex gap-2">
-                                <input type="text" id="serviceAdvicePeople" name="serviceAdvicePeople" min="0"
+                                <input type="text" id="vaccination" name="vaccination" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                     placeholder="คน">
-                                <input type="number" id="serviceAdvicePeople" name="serviceAdvicePeople" min="0"
+                                <input type="number" id="vaccination" name="vaccination" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                     placeholder="ครั้ง">
                             </div>
                         </div>
 
                         <div class="flex flex-col">
-                            <label for="serviceAdvicePeople" class="block mb-1 text-sm text-gray-700">
+                            <label for="AntenatalCare" class="block mb-1 text-sm text-gray-700">
                                 ฝากครรภ์ (PP)
                             </label>
                             <div class="flex gap-2">
-                                <input type="text" id="serviceAdvicePeople" name="serviceAdvicePeople" min="0"
+                                <input type="text" id="AntenatalCare" name="AntenatalCare" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                     placeholder="คน">
-                                <input type="number" id="serviceAdvicePeople" name="serviceAdvicePeople" min="0"
+                                <input type="number" id="AntenatalCare" name="AntenatalCare" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                     placeholder="ครั้ง">
                             </div>
                         </div>
 
                         <div class="flex flex-col">
-                            <label for="serviceAdvicePeople" class="block mb-1 text-sm text-gray-700">
+                            <label for="FamilyPlanning" class="block mb-1 text-sm text-gray-700">
                                 วางแผนครบครัว (PP)
                             </label>
                             <div class="flex gap-2">
-                                <input type="text" id="serviceAdvicePeople" name="serviceAdvicePeople" min="0"
+                                <input type="text" id="FamilyPlanning" name="FamilyPlanning" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                     placeholder="คน">
-                                <input type="number" id="serviceAdvicePeople" name="serviceAdvicePeople" min="0"
+                                <input type="number" id="FamilyPlanning" name="FamilyPlanning" min="0"
                                     class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                     placeholder="ครั้ง">
                             </div>
@@ -164,19 +190,18 @@
                         class="flex items-center font-medium text-green-700 hover:text-green-800">
                         <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"
                             fill="currentColor">
-                            <path
-                                d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z" />
+                            <path d="M73.4 297.4C60.9 309.9 60.9 330.2 73.4 342.7L233.4 502.7C245.9 515.2 266.2 515.2 278.7 502.7C291.2 490.2 291.2 469.9 278.7 457.4L173.3 352L544 352C561.7 352 576 337.7 576 320C576 302.3 561.7 288 544 288L173.3 288L278.7 182.6C291.2 170.1 291.2 149.8 278.7 137.3C266.2 124.8 245.9 124.8 233.4 137.3L73.4 297.3z" />
                         </svg>
                         <span class="ms-2">ย้อนกลับ</span>
                     </a>
                     <div class="flex gap-3">
                         <button type="submit"
-                        class="px-4 py-2 text-white transition bg-green-700 rounded hover:bg-green-800">
-                        บันทึก
-                    </button>
-                    <button type="reset"
-                        class="px-4 py-2 text-gray-700 transition bg-gray-300 rounded hover:bg-gray-400">
-                        ยกเลิก
+                            class="px-4 py-2 text-white transition bg-green-700 rounded hover:bg-green-800">
+                            บันทึก
+                        </button>
+                        <button type="reset"
+                            class="px-4 py-2 text-gray-700 transition bg-gray-300 rounded hover:bg-gray-400">
+                            ยกเลิก
                     </button>
                     </div>
                 </div>
@@ -289,3 +314,5 @@
     </script>
 
 </x-app-layout>
+
+

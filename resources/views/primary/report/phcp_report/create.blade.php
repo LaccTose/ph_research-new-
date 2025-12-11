@@ -13,8 +13,8 @@
                 <h1 class="text-2xl font-bold text-green-800 sm:text-2xl md:text-3xl">
                     แบบบันทึกรายงานผู้รับบริการ
                 </h1>
-                <p class="mt-2 text-lg text-green-700">
-                    ดูแลรักษาและสังเกตอาการผู้ป่วยในศูนย์บริการสาธารณสุข (ศบส.พลัส) 
+                <p class="mt-2 text-xl text-green-700">
+                    ศูนย์บริการสาธารณสุขพลัส (ศบส.พลัส) 
                 </p>
             </div>
 
@@ -81,12 +81,10 @@
 
                         <div>
                             <label for="year" class="block mb-1 text-sm text-gray-700">ปี (พ.ศ.) <span
-                                    class="text-red-500">*</span></label>
+                                class="text-red-500">*</span></label>
                             <input type="number" id="year" name="year" required
                                 class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md focus:ring-green-600 focus:border-green-600" value="{{ date('Y') + 543 }}">
                         </div>
-                        
-                        
                     </div>
                 </fieldset>
 
@@ -301,7 +299,6 @@
 
                 <fieldset class="p-6 mb-8 bg-white border-t-4 border-green-700 rounded-lg shadow-sm ">
                     <legend class="px-4 text-xl font-bold text-green-800">วินิจฉัยโรค</legend>
-                    
                     <div class="mt-4 space-y-4">
                         <div class="flex flex-col">
                             <label for="serviceAdvicePeople" class="block mb-1 text-sm text-gray-700">
@@ -637,15 +634,18 @@
                                 <label class="block mb-1 text-sm text-gray-700">
                                     D/C
                                 </label>
-                                <input type="number" name="tele_smc_to_smc" min="0" class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="คน">
+                                <input type="number" name="tele_smc_to_smc" min="0" 
+                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
+                                    placeholder="คน">
                             </div>
 
                             <div class="flex flex-col">
                                 <label class="block mb-1 text-sm text-gray-700">
                                     Refer
                                 </label>
-                                <input  type="number" name="tele_smc_to_hospital" min="0" class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="คน"
-                                >
+                                <input  type="number" name="tele_smc_to_hospital" min="0" 
+                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
+                                    placeholder="คน">
                             </div>
                         </div>
 
@@ -659,37 +659,45 @@
                                 <label class="block mb-1 text-sm text-gray-700">
                                     สังกัดกรุงเทพมหานคร
                                 </label>
-                                <input type="number" name="tele_smc_to_smc" min="0" class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="คน">
+                                <input type="number" name="tele_smc_to_smc" min="0" 
+                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
+                                    placeholder="คน">
                             </div>
 
                             <div class="flex flex-col">
                                 <label class="block mb-1 text-sm text-gray-700">
                                     สังกัดกระทรวงสาธารณสุข
                                 </label>
-                                <input  type="number" name="tele_smc_to_hospital" min="0" class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="คน"
-                                >
+                                <input  type="number" name="tele_smc_to_hospital" min="0" 
+                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
+                                    placeholder="คน">
                             </div>
                             
                             <div class="flex flex-col">
                                 <label class="block mb-1 text-sm text-gray-700">
                                     โรงพยาบาลเอกชน
                                 </label>
-                                <input type="number" name="tele_smc_to_smc" min="0" class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="คน">
+                                <input type="number" name="tele_smc_to_smc" min="0" 
+                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
+                                    placeholder="คน">
                             </div>
 
                             <div class="flex flex-col">
                                 <label class="block mb-1 text-sm text-gray-700">
                                     โรงเรียนแพทย์
                                 </label>
-                                <input  type="number" name="tele_smc_to_hospital" min="0" class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="คน">
+                                <input type="number" name="tele_smc_to_hospital" min="0" 
+                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
+                                    placeholder="คน">
                             </div>
 
                             <div class="flex flex-col">
                                 <label class="block mb-1 text-sm text-gray-700">
                                     อื่นๆ / ไม่ได้ระบุ
                                 </label>
-                                <input  type="number" name="tele_smc_to_hospital" min="0" class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="คน"
-                                >
+                                <input type="number" name="tele_smc_to_hospital" min="0" 
+                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
+                                    placeholder="คน">
                             </div>
                         </div>
                     </div>
@@ -707,13 +715,13 @@
                     </a>
                     <div class="flex gap-3">
                         <button type="submit"
-                        class="px-4 py-2 text-white transition bg-green-700 rounded hover:bg-green-800">
-                        บันทึก
-                    </button>
-                    <button type="reset"
-                        class="px-4 py-2 text-gray-700 transition bg-gray-300 rounded hover:bg-gray-400">
-                        ยกเลิก
-                    </button>
+                            class="px-4 py-2 text-white transition bg-green-700 rounded hover:bg-green-800">
+                            บันทึก
+                        </button>
+                        <button type="reset"
+                            class="px-4 py-2 text-gray-700 transition bg-gray-300 rounded hover:bg-gray-400">
+                            ยกเลิก
+                        </button>
                     </div>
                 </div>
             </form>
