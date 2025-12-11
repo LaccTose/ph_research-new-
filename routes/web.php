@@ -39,10 +39,7 @@ require __DIR__.'/auth.php';
 Route::prefix('primary')->group(function () {
 
     Route::get('/dashboard', [HealthCenterController::class, 'dashboard'])
-        ->name('dashboard');
-
-    Route::get('/services', [ServiceController::class, 'index'])
-        ->name('services');
+        ->name('primary.dashboard');
 
     Route::prefix('report')->group(function () {
         Route::resource('umsc_report', UMSCReportController::class);
@@ -50,6 +47,9 @@ Route::prefix('primary')->group(function () {
         Route::resource('pcu_report', PCUReportController::class);
         Route::resource('phcp_report', PHCPReportController::class);
     });
+
+    Route::get('/services', [ServiceController::class, 'index'])
+        ->name('primary.services');
 });
 
 
@@ -97,4 +97,4 @@ Route::get('/', function () {
 
 Route::get('/profile', function () {
     return 'profile page';
-})->name('profile.edit');
+})->name('profile.page');

@@ -144,7 +144,7 @@
                             บันทึกข้อมูลการจัดประชุม
                         </button>--}}
                         {{--<form action="{{ route('bookings.store') }}" method="POST">--}}
-                        <a href="{{ route('bookings.create') }}"
+                        <a href="{{ route('booking.create') }}"
                             class="w-full py-2 mt-4 font-semibold text-center text-white bg-green-600 border rounded-lg shadow-sm md:w-full hover:bg-green-700">
                             เพิ่มการจอง</a>
                     </div>          

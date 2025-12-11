@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ url('primary/dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <!--logo สนอ.-->
                         <img src="{{ asset('images/logo3.png') }}" alt="logo" class="object-contain w-auto h-9" />
                     </a>
@@ -13,11 +13,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('primary.dashboard')" :active="request()->routeIs('primary.dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('services')" :active="request()->routeIs('services')">
+                    <x-nav-link :href="route('primary.services')" :active="request()->routeIs('primary.services')">
                         {{ __('Service') }}
                     </x-nav-link>
 
@@ -28,6 +28,8 @@
                     {{--<x-nav-link :href="route('bookings.create')" :active="request()->routeIs('bookings.create')">
                         {{ __('Booking') }}
                     </x-nav-link>--}}
+
+                    <label for=""><span class="text-gray-900">Download</span></label>
                     
                 </div>
             </div>
@@ -93,12 +95,12 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('primary.dashboard')" :active="request()->routeIs('primary.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('services')" :active="request()->routeIs('services')">
+            <x-responsive-nav-link :href="route('primary.services')" :active="request()->routeIs('primary.services')">
                 {{ __('Service') }}
             </x-responsive-nav-link>
         </div>
