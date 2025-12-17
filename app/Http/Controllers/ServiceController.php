@@ -9,6 +9,6 @@ class ServiceController extends Controller
     public function index()
     {
         // จะไปแสดงที่ไฟล์ views/services.blade.php
-        return view('services');
+        return view('primary.services.index');
     }
 }

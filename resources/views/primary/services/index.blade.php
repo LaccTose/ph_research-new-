@@ -5,8 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="sm:py-4 md:py-6 bg-green-50">
-        <div class="p-6 mx-auto bg-white shadow-lg max-w-7xl sm:p-8 rounded-2xl">
+    <div class="py-2">
+        <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+            <div class="p-6 text-gray-900">
 
             <!-- Header -->
             <div class="mb-8 text-center">
@@ -41,6 +42,7 @@
             </div>
             <div id="container"></div>
             <footer></footer>
+            </div>
         </div>
     </div>
 

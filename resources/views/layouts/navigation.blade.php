@@ -13,23 +13,33 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('primary.dashboard')" :active="request()->routeIs('primary.dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('หน้าแรก') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('primary.dashboard')" :active="request()->routeIs('primary.dashboard.index')">
+                        {{ __('งานปฐมภูมิ') }}
+                    </x-nav-link>
+
+                    <x-nav-link>
+                        {{ __('งานวิจัย') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('primary.services')" :active="request()->routeIs('primary.services')">
-                        {{ __('Service') }}
+                        {{ __('การให้บริการ') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('calendar.index')" :active="request()->routeIs('calendar.index')">
-                        {{ __('Calendar') }}
+                        {{ __('ปฏิทินการจัดประชุม') }}
+                    </x-nav-link>
+
+                    <x-nav-link>
+                        {{ __('เอกสารและคู่มือ') }}
                     </x-nav-link>
                     
                     {{--<x-nav-link :href="route('bookings.create')" :active="request()->routeIs('bookings.create')">
                         {{ __('Booking') }}
                     </x-nav-link>--}}
-
-                    <label for=""><span class="text-gray-900">Download</span></label>
                     
                 </div>
             </div>
