@@ -36,7 +36,8 @@ class BookingController extends Controller
 
 public function create()
 {
-    return view('bookings.create');
+    return view('calendar.bookings.create');
+
 }
 
 public function store(Request $request)

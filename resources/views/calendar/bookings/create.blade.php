@@ -18,7 +18,8 @@
                 </p>
             </div>
             
-            <form action="{{ route('bookings.store') }}" method="POST" class="space-y-6">
+            <form action="{{ route('booking.create') }}" method="POST" class="space-y-6">
+
                 @csrf
                 
                 <fieldset class="p-6 mb-8 bg-white border-t-4 border-green-700 rounded-lg shadow-sm">

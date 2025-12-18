@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('is_admin')->nullable();//ถ้าเป็น 1 = admin ให้เข้าหน้าของ admin ถ้าเป็น 0 = user ธรรมดา
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

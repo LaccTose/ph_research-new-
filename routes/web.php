@@ -10,11 +10,11 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocumentController;
+
 
 /*
-|--------------------------------------------------------------------------
 | Authentication Routes
-|--------------------------------------------------------------------------
 */
 /*Route::middleware('auth')->group(function () {
 
@@ -32,9 +32,7 @@ require __DIR__.'/auth.php';
 
 
 /*
-|--------------------------------------------------------------------------
 | PRIMARY (งานปฐมภูมิ)
-|--------------------------------------------------------------------------
 */
 Route::prefix('primary')->group(function () {
 
@@ -54,9 +52,7 @@ Route::prefix('primary')->group(function () {
 
 
 /*
-|--------------------------------------------------------------------------
 | RESEARCH (งานวิจัย)
-|--------------------------------------------------------------------------
 */
 Route::prefix('research')->group(function () {
     // ยังไม่เพิ่ม
@@ -64,9 +60,7 @@ Route::prefix('research')->group(function () {
 
 
 /*
-|--------------------------------------------------------------------------
 | CALENDAR (ระบบจองห้องประชุม)
-|--------------------------------------------------------------------------
 */
 Route::prefix('calendar')->group(function () {
 
@@ -86,15 +80,16 @@ Route::prefix('calendar')->group(function () {
 
 
 /*
-|--------------------------------------------------------------------------
 | HOME PAGE (หน้าหลัก)
-|--------------------------------------------------------------------------
 */
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-
 Route::get('/profile', function () {
     return 'profile page';
 })->name('profile.page');
+
+Route::get('/documents', function () {
+    return view('documents.index');
+})->name('documents.index');

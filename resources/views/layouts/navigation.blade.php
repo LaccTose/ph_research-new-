@@ -33,7 +33,7 @@
                         {{ __('ปฏิทินการจัดประชุม') }}
                     </x-nav-link>
 
-                    <x-nav-link>
+                    <x-nav-link :href="route('documents.index')" :active="request()->routeIs('documents.index')">
                         {{ __('เอกสารและคู่มือ') }}
                     </x-nav-link>
                     
