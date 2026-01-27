@@ -14,7 +14,7 @@ use App\Http\Controllers\DocumentController;
 
 
 /*
-| Authentication Routes
+Authentication Routes
 */
 /*Route::middleware('auth')->group(function () {
 
@@ -32,7 +32,7 @@ require __DIR__.'/auth.php';
 
 
 /*
-| PRIMARY (งานปฐมภูมิ)
+PRIMARY (งานปฐมภูมิ)
 */
 Route::prefix('primary')->group(function () {
 
@@ -52,7 +52,7 @@ Route::prefix('primary')->group(function () {
 
 
 /*
-| RESEARCH (งานวิจัย)
+RESEARCH (งานวิจัย)
 */
 Route::prefix('research')->group(function () {
     // ยังไม่เพิ่ม
@@ -60,7 +60,7 @@ Route::prefix('research')->group(function () {
 
 
 /*
-| CALENDAR (ระบบจองห้องประชุม)
+CALENDAR (ระบบจองห้องประชุม)
 */
 Route::prefix('calendar')->group(function () {
 
@@ -76,11 +76,12 @@ Route::prefix('calendar')->group(function () {
 
     Route::post('/booking', [BookingController::class, 'store'])
         ->name('booking.store');
+
 });
 
 
 /*
-| HOME PAGE (หน้าหลัก)
+HOME PAGE (หน้าหลัก)
 */
 Route::get('/', function () {
     return view('home');

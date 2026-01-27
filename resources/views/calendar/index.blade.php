@@ -6,7 +6,7 @@
     </x-slot>
 
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+    
     <style>
         [x-cloak] {
             display: none;
@@ -14,7 +14,7 @@
     </style>
 
     <div class="antialiased font-soa-chingcha">
-        <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
+        <div x-data="app()" x-init="initDate(); getNoOfDays()" x-cloak>
             <div class="container py-2 mx-auto">
                 <div class="flex flex-col md:flex-row md:items-stretch gap-3 md:gap-1.5">
                 <!-- <div class="mb-4 text-xl font-bold text-gray-800">
@@ -164,7 +164,7 @@
                             </div>
 
                             <div class="mt-4 mb-4">
-                                <span x-text="MONTH_NAMES[month]" class="text-3xl text-gray-700"></span>
+                                <span x-text="month_names[month]" class="text-3xl text-gray-700"></span>
                                 <span x-text="displayYear" class="ml-1 text-3xl font-bold text-gray-700"></span>
                             </div>
 
@@ -191,22 +191,18 @@
                             </div>
                         </div>
 
-                            <div class="-mx-1 -mb-1" x-ignore>
-                                <div class="flex flex-wrap border-t border-l">
-                                    <template x-for="(day, index) in DAYS" :key="index">
+                            <div>
+                                <div class="flex flex-wrap border-l">
+                                    <template x-for="(day, index) in days" :key="index">
                                         <div style="width: 14.28%"
-                                            class="flex items-center justify-center h-8 font-bold text-gray-700 uppercase bg-gray-100 border-b border-r">
-
-
-                                            <div>
-                                                <span x-text="day" class="tracking-wide text-gray-600"></span>
-                                            </div>
+                                            class="grid place-items-center justify-center h-10 font-bold text-gray-700 bg-gray-100 border-r leading-none">                                            
+                                            <span x-text="day" class="tracking-wide text-gray-600"></span>
                                         </div>
                                     </template>
                                 </div>
 
 
-                                <div class="flex flex-wrap border-t border-l">
+                                <div class="flex flex-wrap border-l">
                                     <template x-for="day in blankdays">
                                         <div style="width: 14.28%; height: 120px"
                                             class="relative px-4 pt-2 text-center border-b border-r">
@@ -228,24 +224,24 @@
 
                                             <div style="height: 80px;" class="mt-1 overflow-y-auto">
                                                 <template
-                                                    x-for="event in events.filter(e => new Date(e.event_date).toDateString() === new Date(year, month, day.date).toDateString())">
-                                                    <div class="px-2 py-1 mt-1 overflow-hidden border rounded-lg"
+                                                    x-for="event in events.filter(e =>
+                                                        e.event_date === new Date(year, month + day.monthOffset, day.date)
+                                                            .toISOString().slice(0,10)
+                                                    )"
+                                                >
+                                                    <div class="px-2 py-1 mt-1 overflow-hidden border rounded-lg cursor-pointer"
+                                                        @click="showEventDetail(event)"
                                                         :class="{
-                                                            'border-blue-200 text-blue-800 bg-blue-100': event
-                                                                .event_theme === 'blue',
-                                                            'border-red-200 text-red-800 bg-red-100': event
-                                                                .event_theme === 'red',
-                                                            'border-yellow-200 text-yellow-800 bg-yellow-100': event
-                                                                .event_theme === 'yellow',
-                                                            'border-green-200 text-green-800 bg-green-100': event
-                                                                .event_theme === 'green',
-                                                            'border-purple-200 text-purple-800 bg-purple-100': event
-                                                                .event_theme === 'purple'
+                                                            'border-blue-200 text-blue-800 bg-blue-100': event.event_theme === 'blue',
+                                                            'border-red-200 text-red-800 bg-red-100': event.event_theme === 'red',
+                                                            'border-yellow-200 text-yellow-800 bg-yellow-100': event.event_theme === 'yellow',
+                                                            'border-green-200 text-green-800 bg-green-100': event.event_theme === 'green',
+                                                            'border-purple-200 text-purple-800 bg-purple-100': event.event_theme === 'purple'
                                                         }">
-                                                        <p x-text="event.event_title" class="text-sm leading-tight truncate">
-                                                        </p>
+                                                        <p x-text="event.event_title" class="text-sm leading-tight truncate"></p>
                                                     </div>
                                                 </template>
+
                                             </div>
                                         </div>
                                     </template>
@@ -257,18 +253,21 @@
             </div>
             
 
-            {{-- <!--pop up-->
+            <!--pop up-->
 		    <div style=" background-color: rgba(0, 0, 0, 0.8)" class="fixed top-0 bottom-0 left-0 right-0 z-40 w-full h-full" x-show.transition.opacity="openEventModal">
-			<div class="absolute relative left-0 right-0 max-w-xl p-4 mx-auto mt-24 overflow-hidden">
-				<div class="absolute top-0 right-0 inline-flex items-center justify-center w-10 h-10 text-gray-500 bg-white rounded-full shadow cursor-pointer hover:text-gray-800"
-					x-on:click="openEventModal = !openEventModal">
+			<div class="relative left-0 right-0 max-w-xl p-4 mx-auto mt-24 overflow-hidden ">
+				<div @click="openEventModal = false; 
+                            selectedEvent = null;
+                            event_title = '';
+                            event_date = '';
+                            event_theme = 'blue';">
 					<svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 						<path
 							d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" />
 					</svg>
 				</div>
 
-				
+				<!-- pop up -->
 				<div class="block w-full p-8 overflow-hidden bg-white rounded-lg shadow">
 					
 					<h2 class="pb-2 mb-6 text-2xl font-bold text-gray-800 border-b">บันทึกข้อมูลการจัดประชุม/การจัดกิจกรรม/การจัดงาน สำนักอนามัย กรุงเทพมหานคร</h2>
@@ -311,7 +310,7 @@
 				</div>
 			</div>
 		    </div>
-		    <!-- /Modal --> --}}
+		    <!-- /Modal -->
         </div>
 
         <script>
@@ -332,11 +331,14 @@
 
             function app() {
                 return {
-                    month: '',
-                    year: '',
+                    month_names: MONTH_NAMES,
+                    days: DAYS,
+                    month: 0,
+                    year: 0,
                     displayYear: '',
                     no_of_days: [],
                     blankdays: [],
+                   
                     // DAYS constant ข้างบนใช้ใน template header
                     events: [
                         // เก็บเป็น ISO string (yyyy-mm-dd) เพื่อเปรียบเทียบง่าย
@@ -356,6 +358,7 @@
                             event_theme: 'green'
                         }
                     ],
+                    selectedEvent: null,
                     event_title: '',
                     event_date: '',
                     event_theme: 'blue',
@@ -439,30 +442,46 @@
                     },
 
                     showEventModal(date, monthOverride = null, yearOverride = null) {
-                        // date รับได้เป็นตัวเลขหรือ ISO string
                         let iso;
                         if (typeof date === 'number') {
                             const m = monthOverride !== null ? monthOverride : this.month;
                             const y = yearOverride !== null ? yearOverride : this.year;
                             iso = toISO(new Date(y, m, date));
                         } else {
-                            iso = date; // assume ISO
+                            iso = date; 
                         }
+                        this.selectedEvent = null;
+                        this.event_title = '';
+                        this.event_theme = 'blue';
+
+                        this.event_date = iso;
+                        this.openEventModal = true; 
+                    },
+
+                    showEventDetail(event) {
+                        this.selectedEvent = event;
+                        this.event_title = event.event_title;
+                        this.event_date = event.event_date;
+                        this.event_theme = event.event_theme;
                         this.openEventModal = true;
-                        this.event_date = iso; // เก็บเป็น yyyy-mm-dd
                     },
 
                     addEvent() {
                         if (this.event_title == '') return;
 
-                        // เก็บ events แบบสม่ำเสมอ (ISO yyyy-mm-dd)
-                        this.events.push({
-                            event_date: this.event_date,
-                            event_title: this.event_title,
-                            event_theme: this.event_theme
-                        });
+                        if(this.selectedEvent){
+                            this.selectedEvent.event_title = this.event_title;
+                            this.selectedEvent.event_theme = this.event_theme;
+                        }else{
+                            this.events.push({
+                                event_date: this.event_date,
+                                event_title: this.event_title,
+                                event_theme: this.event_theme
+                            }); 
+                        }
 
                         // clear
+                        this.selectedEvent = null;
                         this.event_title = '';
                         this.event_date = '';
                         this.event_theme = 'blue';
@@ -510,11 +529,16 @@
 
                         this.blankdays = blankdaysArray;
                         // เก็บ no_of_days เป็น object ของ current month + next month (เพื่อให้ template ใช้งานได้)
-                        this.no_of_days = [...daysArray, ...nextMonthDays];
-                    }
-                }
+                        this.no_of_days = daysArray;
+                    },
+
+                
+
             }
+        }
         </script>
+            
 
     </div>
 </x-app-layout>
+
