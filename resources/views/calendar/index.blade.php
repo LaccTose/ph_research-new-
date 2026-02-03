@@ -195,7 +195,7 @@
                                 <div class="flex flex-wrap border-l">
                                     <template x-for="(day, index) in days" :key="index">
                                         <div style="width: 14.28%"
-                                            class="grid place-items-center justify-center h-10 font-bold text-gray-700 bg-gray-100 border-r leading-none">                                            
+                                            class="grid justify-center h-10 font-bold leading-none text-gray-700 bg-gray-100 border-r place-items-center">                                            
                                             <span x-text="day" class="tracking-wide text-gray-600"></span>
                                         </div>
                                     </template>
@@ -314,6 +314,7 @@
         </div>
 
         <script>
+            const bookings = @json($bookings);
             const MONTH_NAMES = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม',
                 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
             ];

@@ -9,15 +9,15 @@ class CalendarController extends Controller
 {
     public function index()
     {
-        /*$bookings = Booking::select(
+        $bookings = Booking::select(
             'id',
             'title',
-            'start_date',
-            'end_date',
-            'theme'
+            'start_at',
+            'end_at',
+            'status',
         )->get();
 
-        return view('calendar.index', compact('bookings'));*/
+        return view('calendar.index', compact('bookings'));
 
         //เอาไว้เช็ค fullcalendar
         $events = Booking::all()->map(function ($booking) {
