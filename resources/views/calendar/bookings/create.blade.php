@@ -6,6 +6,14 @@
         </h2>
     </x-slot>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        .flatpickr-calendar {
+            { font-family: 'Sarabun', sans-serif; } 
+        }
+        .flatpickr-day.selected { background: #15803d !important; border-color: #15803d !important; }
+    </style>
+
     <div class="container py-2 mx-auto">
         <div class="p-6 mx-auto bg-white shadow-lg max-w-7xl sm:p-8 rounded-2xl">
 
@@ -26,7 +34,8 @@
                     <legend class="px-4 text-xl font-bold text-green-800">หัวข้อการประชุม/การจัดกิจกรรม/การจัดงาน</legend>
                     <!-- 2.1 ชื่อเรื่อง -->
                     <div>
-                        <label class="block mb-1 text-sm text-gray-700">ชื่อเรื่องการประชุม/การจัดกิจกรรม/การจัดงาน</label>
+                        <label class="block mb-1 text-sm text-gray-700">ชื่อเรื่องหัวข้อการประชุม/การจัดกิจกรรม/การจัดงาน 
+                            <span class="text-red-500">*</span></label>
                         <input type="text" name="title" required
                             class="w-full text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
                     </div>
@@ -37,23 +46,23 @@
                     <!-- 2.2 วันที่และเวลา -->
                     <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
                         <div>
-                            <label class="block mb-1 text-sm text-gray-700">วันที่เริ่มต้น</label>
-                            <input type="date" name="start_date" required
+                            <label class="block mb-1 text-sm text-gray-700">วันที่เริ่มต้น <span class="text-red-500">*</span></label>
+                            <input type="text" id="start_date" name="start_date" required placeholder="คลิกเพื่อเพิ่มวันที่เริ่มต้น"
+                                class="w-full text-sm text-gray-700 border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-green-600 focus:border-green-600">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm text-gray-700">วันที่สิ้นสุด <span class="text-red-500">*</span></label>
+                            <input type="text" id="end_date" name="end_date" required readonly placeholder="คลิกเพื่อเพิ่มวันที่สิ้นสุด"
+                                class="w-full text-sm text-gray-700 border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:ring-green-600 focus:border-green-600">
+                        </div>
+                        <div>
+                            <label class="block mb-1 text-sm text-gray-700">เวลาเริ่มต้น <span class="text-red-500">*</span></label>
+                            <input type="text" id="start_time" name="start_time" required readonly placeholder="คลิกเพื่อเลือกเวลาเริ่มต้น"
                                 class="w-full text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
                         </div>
                         <div>
-                            <label class="block mb-1 text-sm text-gray-700">วันที่สิ้นสุด</label>
-                            <input type="date" name="end_date" required
-                                class="w-full text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
-                        </div>
-                        <div>
-                            <label class="block mb-1 text-sm text-gray-700">เวลาเริ่ม</label>
-                            <input type="time" name="start_time" required
-                                class="w-full text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
-                        </div>
-                        <div>
-                            <label class="block mb-1 text-sm text-gray-700">เวลาสิ้นสุด</label>
-                            <input type="time" name="end_time" required
+                            <label class="block mb-1 text-sm text-gray-700">เวลาสิ้นสุด <span class="text-red-500">*</span></label>
+                            <input type="text" id="end_time" name="end_time" required readonly placeholder="คลิกเพื่อเลือกเวลาสิ้นสุด"
                                 class="w-full text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
                         </div>
                     </div>
@@ -118,7 +127,7 @@
 
                     <!-- 2.6 ส่วนราชการ -->
                     <div>
-                        <label class="block mb-1 text-sm text-gray-700">ส่วนราชการ</label>
+                        <label class="block mb-1 text-sm text-gray-700">ส่วนราชการ <span class="text-red-500">*</span></label>
                         <input type="text" name="department" class="w-full text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
                     </div>
                 </div>
@@ -134,21 +143,21 @@
                             </label>
                             <input type="text" id="coordinatorName" name="coordinatorName"
                                 class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"
-                                placeholder="ชื่อ-สกุล">
+                                placeholder="ชื่อ-สกุล" required>
                         </div>
                         <div>
                             <label for="coordinatorPosition" class="block mb-1 text-sm text-gray-700">
                                 ตำแหน่ง <span class="text-red-500">*</span>
                             </label>
                             <input type="text" id="coordinatorPosition" name="coordinatorPosition"
-                                class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="ตำแหน่ง">
+                                class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="ตำแหน่ง" required>
                         </div>
 
                         <div>
                             <label class="text-sm text-gray-700">
                                 เบอร์โทรศัพท์ <span class="text-red-500">*</span></label>
                             <input type="tel" id="coordinatorPhone" name="coordinatorPhone" maxlength="12"
-                            oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\d{2})(\d{4})(\d{0,4}).*/, '$1-$2-$3')" class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="00-0000-0000">
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\d{2})(\d{4})(\d{0,4}).*/, '$1-$2-$3')" class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" placeholder="00-0000-0000" required>
                         </div>
 
                     </div>
@@ -177,19 +186,76 @@
     </div>
 
     
-    {{--@push('scripts')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/3.3.5/css/datepicker.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/3.3.5/js/datepicker.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/3.3.5/js/i18n/datepicker.th.min.js"></script>
-<script>
-new AirDatepicker('#start_date', {
-    language: 'th',
-    dateFormat: 'yyyy-mm-dd',
-    altField: '#start_date',
-    altFormat: 'd M yyyy', 
-    onRenderCell: function (date, cellType) {
-    }
-});
-</script>
-@endpush--}}
+    @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/th.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ตั้งค่าวันที่ ภาษาไทย ปี พ.ศ.
+            const dateConfig = {
+                locale: 'th',
+                allowInput: true,
+                altInput: true,
+                altFormat: "j F Y", // แสดงแบบ "16 มีนาคม 2569"
+                dateFormat: "Y-m-d", // ส่งค่าไป Server แบบ "2026-03-16"
+                formatDate: (date, format, locale) => {
+                    const d = date.getDate();
+                    const m = locale.months.longhand[date.getMonth()];
+                    const y = date.getFullYear() + 543; // แปลงเป็น พ.ศ.
+                    return `${d} ${m} ${y}`;
+                },
+
+                parseDate: (dateStr, format) => {
+                    const parts = dateStr.split('/');
+                    if (parts.length === 3) {
+                       let day = parseInt(parts[0]);
+                       let month = parseInt(parts[1]) - 1;
+                       let year = parseInt(parts[2]);
+                        
+                       if(year > 2400){
+                        year = year - 543;
+                       }
+                       return new Date(year, month, day);
+                    }
+                    return new Date(datestr);
+                },
+                onClose: function(selectedDates, dateStr, instance) {
+                    if (selectedDates.length === 0 && instance.input.value !== "") {
+                        instance.Clear();
+                    }
+                }
+            };
+
+            flatpickr("#start_date", dateConfig);
+            flatpickr("#end_date", dateConfig);
+
+            /*
+            // ตั้งค่าเวลา 24 ชั่วโมง
+            const timeConfig = {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true, // ใช้ระบบ 24 ชม. ไม่มี AM/PM
+                minuteIncrement: 1 // เลือกนาทีได้ละเอียดทีละ 1 นาที
+            };*/
+
+            flatpickr("#start_time",{
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true,
+                allowInput: true
+            });
+            flatpickr("#end_time",{
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: true,
+                allowInput: true
+            });
+        });
+    </script>
+    @endpush
+
 </x-app-layout>
+

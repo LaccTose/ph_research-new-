@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('ปฏิทินการจัดประชุม/ การจัดกิจกรรม/ การจัดงาน สำนักอนามัย กรุงเทพมหานคร') }}            
+            {{ __('ปฏิทินการจัดประชุม/ การจัดกิจกรรม/ การจัดงาน สำนักอนามัย กรุงเทพมหานคร') }}
         </h2>
     </x-slot>
 
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
-    
+
     <style>
         [x-cloak] {
             display: none;
@@ -14,188 +14,201 @@
     </style>
 
     <div class="antialiased font-soa-chingcha">
-        <div x-data="app()" x-init="initDate(); getNoOfDays()" x-cloak>
+        <div x-data="app()" x-init="initDate();
+        getNoOfDays()" x-cloak>
             <div class="container py-2 mx-auto">
                 <div class="flex flex-col md:flex-row md:items-stretch gap-3 md:gap-1.5">
-                <!-- <div class="mb-4 text-xl font-bold text-gray-800">
-    			    Schedule Tasks
-  			    </div> -->
+                    <!-- <div class="mb-4 text-xl font-bold text-gray-800">
+    Schedule Tasks
+  </div> -->
 
-                <!--filter-->
-                <div class="flex flex-col w-full md:w-1/4 md:h-auto">
-                    <div class="h-full p-4">
-                        <div id="dropdown" class="flex flex-col flex-1 p-4 bg-white rounded-lg shadow">
-                            <h6 class="mb-3 text-base font-bold text-center text-gray-900 dark:text-white">
-                                กลุ่มเป้าหมาย
-                            </h6>
-                            <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
-                                <li class="flex items-center">
-                                    <input id="apple" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500"/>
+                    <!--filter-->
+                    <div class="flex flex-col w-full md:w-1/4 md:h-auto">
+                        <div class="h-full p-4">
+                            <div id="dropdown" class="flex flex-col flex-1 p-4 bg-white rounded-lg shadow">
+                                <h6 class="mb-3 text-base font-bold text-center text-gray-900 dark:text-white">
+                                    กลุ่มเป้าหมาย
+                                </h6>
+                                <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
+                                    <li class="flex items-center">
+                                        <input id="apple" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="apple" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="apple"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             ผู้อำนวยการสำนักงาน/กอง
-                                    </label>
-                                </li>
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        ผู้อำนวยการศูนย์บริการสาธารณสุข
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            ผู้อำนวยการศูนย์บริการสาธารณสุข
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        แพทย์
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            แพทย์
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        ทันตแพทย์
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            ทันตแพทย์
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        นายสัตวแพทย์
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            นายสัตวแพทย์
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        เภสัชกร
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            เภสัชกร
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        พยาบาลวิชาชีพ
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            พยาบาลวิชาชีพ
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        นักวิชาการสาธารณสุข
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            นักวิชาการสาธารณสุข
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        นักวิชาการสุขาภิบาล
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            นักวิชาการสุขาภิบาล
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        นักสังคมสงเคราะห์
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            นักสังคมสงเคราะห์
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        นักรังสีการแพทย์
-                                    </label>
-                                </li>
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            นักรังสีการแพทย์
+                                        </label>
+                                    </li>
 
-                                <li class="flex items-center">
-                                    <input id="fitbit" type="checkbox" value=""
-                                        class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                    <li class="flex items-center">
+                                        <input id="fitbit" type="checkbox" value=""
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
 
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
-                                        นักจิตวิทยา
-                                    </label>
-                                </li>
-                        </div>
-                        <div class="flex flex-col">
-                        {{--<button type="button"
+                                        <label for="fitbit"
+                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                            นักจิตวิทยา
+                                        </label>
+                                    </li>
+                            </div>
+                            <div class="flex flex-col">
+                                {{-- <button type="button"
                             class="w-56 px-2 py-2 font-semibold text-white bg-green-700 border rounded-lg shadow-sm hover:bg-green-600"
                             @click="window.location.href='{{ route('bookings.create') }}'">
                             บันทึกข้อมูลการจัดประชุม
-                        </button>--}}
-                        {{--<form action="{{ route('bookings.store') }}" method="POST">--}}
-                        <a href="{{ route('booking.create') }}"
-                            class="w-full py-2 mt-4 font-semibold text-center text-white bg-green-600 border rounded-lg shadow-sm md:w-full hover:bg-green-700">
-                            เพิ่มการจอง</a>
-                    </div>          
-                    </div>
-                            
-                </div>
-                
-            <!--button-->
-                <div class="flex-1 p-4">
-                    <div class="h-full overflow-hidden bg-white rounded-lg shadow">
-                        <div class="flex items-center justify-between px-6 py-2 border-b">
-                            <div class="text-lg">
-                                <button type="button"
-                                    class="px-4 py-2 text-lg font-semibold text-gray-700 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 "
-                                    @click="goToToday(); initDate()">วันนี้
-                                </button>
-                            </div>
-
-                            <div class="mt-4 mb-4">
-                                <span x-text="month_names[month]" class="text-3xl text-gray-700"></span>
-                                <span x-text="displayYear" class="ml-1 text-3xl font-bold text-gray-700"></span>
-                            </div>
-
-                            <div class="px-1 border rounded-lg" style="padding-top: 2px;">
-                                <button type="button"
-                                    class="inline-flex p-1 leading-none transition duration-100 ease-in-out rounded-lg cursor-pointer hover:bg-gray-200"
-                                    @click="prevMonth(); getNoOfDays()">
-                                    <svg class="inline-flex w-6 h-6 leading-none text-gray-500" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                </button>
-                                <div class="inline-flex h-6 border-r"></div>
-                                <button type="button"
-                                    class="inline-flex items-center p-1 leading-none transition duration-100 ease-in-out rounded-lg cursor-pointer hover:bg-gray-200"
-                                    @click="nextMonth(); getNoOfDays()">
-                                    <svg class="inline-flex w-6 h-6 leading-none text-gray-500" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </button>
+                        </button> --}}
+                                {{-- <form action="{{ route('bookings.store') }}" method="POST"> --}}
+                                <a href="{{ route('booking.create') }}"
+                                    class="w-full py-2 mt-4 font-semibold text-center text-white bg-green-600 border rounded-lg shadow-sm md:w-full hover:bg-green-700">
+                                    เพิ่มการจอง</a>
                             </div>
                         </div>
+
+                    </div>
+
+                    <!--button-->
+                    <div class="flex-1 p-4">
+                        <div class="h-full overflow-hidden bg-white rounded-lg shadow">
+                            <div class="flex items-center justify-between px-6 py-2 border-b">
+                                <div class="text-lg">
+                                    <button type="button"
+                                        class="px-4 py-2 text-lg font-semibold text-gray-700 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 "
+                                        @click="goToToday(); initDate()">วันนี้
+                                    </button>
+                                </div>
+
+                                <div class="mt-4 mb-4">
+                                    <span x-text="month_names[month]" class="text-3xl text-gray-700"></span>
+                                    <span x-text="displayYear" class="ml-1 text-3xl font-bold text-gray-700"></span>
+                                </div>
+
+                                <div class="px-1 border rounded-lg" style="padding-top: 2px;">
+                                    <button type="button"
+                                        class="inline-flex p-1 leading-none transition duration-100 ease-in-out rounded-lg cursor-pointer hover:bg-gray-200"
+                                        @click="prevMonth(); getNoOfDays()">
+                                        <svg class="inline-flex w-6 h-6 leading-none text-gray-500" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                    </button>
+                                    <div class="inline-flex h-6 border-r"></div>
+                                    <button type="button"
+                                        class="inline-flex items-center p-1 leading-none transition duration-100 ease-in-out rounded-lg cursor-pointer hover:bg-gray-200"
+                                        @click="nextMonth(); getNoOfDays()">
+                                        <svg class="inline-flex w-6 h-6 leading-none text-gray-500" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
 
                             <div>
                                 <div class="flex flex-wrap border-l">
                                     <template x-for="(day, index) in days" :key="index">
                                         <div style="width: 14.28%"
-                                            class="grid justify-center h-10 font-bold leading-none text-gray-700 bg-gray-100 border-r place-items-center">                                            
+                                            class="grid justify-center h-10 font-bold leading-none text-gray-700 bg-gray-100 border-r place-items-center">
                                             <span x-text="day" class="tracking-wide text-gray-600"></span>
                                         </div>
                                     </template>
@@ -212,18 +225,21 @@
                                     </template>
 
                                     <template x-for="(day, index) in no_of_days" :key="index">
-                                        <div style="width: 14.28%; height: 120px" class="relative px-4 pt-2 border-b border-r">
+                                        <div style="width: 14.28%; height: 120px"
+                                            class="relative px-4 pt-2 border-b border-r">
                                             <div @click="showEventModal(day.date)" x-text="day.date"
                                                 class="inline-flex items-center justify-center w-6 h-6 leading-none text-center transition duration-100 ease-in-out rounded-full cursor-pointer"
                                                 :class="{
                                                     'bg-red-400 text-white': isToday(day.date) && day.isCurrentMonth,
-                                                    'text-gray-700 hover:bg-blue-200': day.isCurrentMonth && !isToday(day.date),
+                                                    'text-gray-700 hover:bg-blue-200': day.isCurrentMonth && !isToday(
+                                                        day.date),
                                                     'text-gray-400': !day.isCurrentMonth
                                                 }">
                                             </div>
 
                                             <div style="height: 80px;" class="mt-1 overflow-y-auto">
-                                                <template
+                                                {{-- เก็บไว้ก่อน --}}
+                                                {{-- <template
                                                     x-for="event in events.filter(e =>
                                                         e.event_date === new Date(year, month + day.monthOffset, day.date)
                                                             .toISOString().slice(0,10)
@@ -240,8 +256,13 @@
                                                         }">
                                                         <p x-text="event.event_title" class="text-sm leading-tight truncate"></p>
                                                     </div>
+                                                </template> --}}
+                                                <template
+                                                    x-for="event in bookings.filter(b =>new Date(b.start_at).toDateString() === new Date(year, month, day.date).toDateString())">
+                                                    <div class="px-2 py-1 mt-1 text-xs text-white bg-green-600 rounded cursor-pointer"
+                                                        @click="showEventDetail(event)" x-text="event.title">
+                                                    </div>
                                                 </template>
-
                                             </div>
                                         </div>
                                     </template>
@@ -251,66 +272,86 @@
                     </div>
                 </div>
             </div>
-            
+
 
             <!--pop up-->
-		    <div style=" background-color: rgba(0, 0, 0, 0.8)" class="fixed top-0 bottom-0 left-0 right-0 z-40 w-full h-full" x-show.transition.opacity="openEventModal">
-			<div class="relative left-0 right-0 max-w-xl p-4 mx-auto mt-24 overflow-hidden ">
-				<div @click="openEventModal = false; 
+            <div style=" background-color: rgba(0, 0, 0, 0.8)"
+                class="fixed top-0 bottom-0 left-0 right-0 z-40 w-full h-full"
+                x-show.transition.opacity="openEventModal">
+                <div class="relative left-0 right-0 max-w-xl p-4 mx-auto mt-24 overflow-hidden ">
+                    <div
+                        @click="openEventModal = false; 
                             selectedEvent = null;
                             event_title = '';
                             event_date = '';
                             event_theme = 'blue';">
-					<svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-						<path
-							d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" />
-					</svg>
-				</div>
+                        <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" />
+                        </svg>
+                    </div>
 
-				<!-- pop up -->
-				<div class="block w-full p-8 overflow-hidden bg-white rounded-lg shadow">
-					
-					<h2 class="pb-2 mb-6 text-2xl font-bold text-gray-800 border-b">บันทึกข้อมูลการจัดประชุม/การจัดกิจกรรม/การจัดงาน สำนักอนามัย กรุงเทพมหานคร</h2>
-				 
-					<div class="mb-4">
-						<label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">ชื่อเรื่องการจัดประชุม/การจัดกิจกรรม/การจัดงาน</label>
-						<input class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:bg-white focus:border-blue-500" type="text" x-model="event_title">
-					</div>
+                    <!-- pop up -->
+                    <div class="block w-full p-8 overflow-hidden bg-white rounded-lg shadow">
 
-                    <!---->
-					<div class="mb-4">
-						<label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">วันที่จัด</label>
-						<input class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:bg-white focus:border-blue-500" type="text" x-model="event_date" readonly>
-					</div>
+                        <h2 class="pb-2 mb-6 text-2xl font-bold text-gray-800 border-b">
+                            บันทึกข้อมูลการจัดประชุม/การจัดกิจกรรม/การจัดงาน สำนักอนามัย กรุงเทพมหานคร</h2>
 
-                    <!---->
-					<div class="inline-block w-64 mb-4">
-						<label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">Select a theme</label>
-						<div class="relative">
-							<select @change="event_theme = $event.target.value;" x-model="event_theme" class="block w-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-lg appearance-none hover:border-gray-500 focus:outline-none focus:bg-white focus:border-blue-500">
-									<template x-for="(theme, index) in themes">
-										<option :value="theme.value" x-text="theme.label"></option>
-									</template>
-								
-							</select>
-							<div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-							<svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-							</div>
-						</div>
-					</div>
- 
-					<div class="mt-8 text-right">
-						<button type="button" class="px-4 py-2 mr-2 font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100" @click="openEventModal = !openEventModal">
-							ยกเลิก
-						</button>	
-						<button type="button" class="px-4 py-2 font-semibold text-white bg-gray-800 border border-gray-700 rounded-lg shadow-sm hover:bg-gray-700" @click="addEvent()">
-							บันทึก
-						</button>	
-					</div>
-				</div>
-			</div>
-		    </div>
-		    <!-- /Modal -->
+                        <div class="mb-4">
+                            <label
+                                class="block mb-1 text-sm font-bold tracking-wide text-gray-800">ชื่อเรื่องการจัดประชุม/การจัดกิจกรรม/การจัดงาน</label>
+                            <input
+                                class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:bg-white focus:border-blue-500"
+                                type="text" x-model="event_title">
+                        </div>
+
+                        <!---->
+                        <div class="mb-4">
+                            <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">วันที่จัด</label>
+                            <input
+                                class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:bg-white focus:border-blue-500"
+                                type="text" x-model="event_date" readonly>
+                        </div>
+
+                        <!---->
+                        <div class="inline-block w-64 mb-4">
+                            <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">Select a
+                                theme</label>
+                            <div class="relative">
+                                {{--<select @change="event_theme = $event.target.value;" x-model="event_theme"
+                                    class="block w-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-lg appearance-none hover:border-gray-500 focus:outline-none focus:bg-white focus:border-blue-500">
+                                    <template x-for="(theme, index) in themes">
+                                        <option :value="theme.value" x-text="theme.label"></option>
+                                    </template>
+
+                                </select>--}}
+                                <div
+                                    class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 text-right">
+                            <button type="button"
+                                class="px-4 py-2 mr-2 font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100"
+                                @click="openEventModal = !openEventModal">
+                                ยกเลิก
+                            </button>
+                            <button type="button"
+                                class="px-4 py-2 font-semibold text-white bg-gray-800 border border-gray-700 rounded-lg shadow-sm hover:bg-gray-700"
+                                @click="addEvent()">
+                                บันทึก
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Modal -->
         </div>
 
         <script>
@@ -339,7 +380,7 @@
                     displayYear: '',
                     no_of_days: [],
                     blankdays: [],
-                   
+
                     // DAYS constant ข้างบนใช้ใน template header
                     events: [
                         // เก็บเป็น ISO string (yyyy-mm-dd) เพื่อเปรียบเทียบง่าย
@@ -363,7 +404,7 @@
                     event_title: '',
                     event_date: '',
                     event_theme: 'blue',
-                    themes: [{
+                    /*themes: [{
                             value: "blue",
                             label: "Blue Theme"
                         },
@@ -383,7 +424,7 @@
                             value: "purple",
                             label: "Purple Theme"
                         }
-                    ],
+                    ],*/
                     openEventModal: false,
 
                     goToToday() {
@@ -449,14 +490,14 @@
                             const y = yearOverride !== null ? yearOverride : this.year;
                             iso = toISO(new Date(y, m, date));
                         } else {
-                            iso = date; 
+                            iso = date;
                         }
                         this.selectedEvent = null;
                         this.event_title = '';
                         this.event_theme = 'blue';
 
                         this.event_date = iso;
-                        this.openEventModal = true; 
+                        this.openEventModal = true;
                     },
 
                     showEventDetail(event) {
@@ -470,15 +511,15 @@
                     addEvent() {
                         if (this.event_title == '') return;
 
-                        if(this.selectedEvent){
+                        if (this.selectedEvent) {
                             this.selectedEvent.event_title = this.event_title;
                             this.selectedEvent.event_theme = this.event_theme;
-                        }else{
+                        } else {
                             this.events.push({
                                 event_date: this.event_date,
                                 event_title: this.event_title,
                                 event_theme: this.event_theme
-                            }); 
+                            });
                         }
 
                         // clear
@@ -533,13 +574,12 @@
                         this.no_of_days = daysArray;
                     },
 
-                
 
+
+                }
             }
-        }
         </script>
-            
+
 
     </div>
 </x-app-layout>
-

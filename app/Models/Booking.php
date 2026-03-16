@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+ 
 class Booking extends Model
 {
     protected $fillable = [
@@ -11,10 +12,17 @@ class Booking extends Model
         'end_at',
         'status',
         'user_id',
+        'chairman',
+        'targets',
+        'participants',
+        'department',
+        'coodinatot',
+        'phone',
     ];
 
-    protected $casts = [
-        'start_at' => 'datetime',
-        'end_at' => 'datetime',
+    protected $dates = [
+        'start_at'=>'start_date',
+        'end_at'=>'end_date',
     ];
 }
+

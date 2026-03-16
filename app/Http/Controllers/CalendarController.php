@@ -19,6 +19,7 @@ class CalendarController extends Controller
 
         return view('calendar.index', compact('bookings'));
 
+        /*
         //เอาไว้เช็ค fullcalendar
         $events = Booking::all()->map(function ($booking) {
         return [
@@ -29,6 +30,6 @@ class CalendarController extends Controller
         ];
     });
 
-        return view('calendar.index', compact('events'));
+        return view('calendar.index', compact('events'));*/
     }
 }
