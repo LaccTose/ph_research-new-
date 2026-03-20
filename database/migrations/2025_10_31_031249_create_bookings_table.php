@@ -11,10 +11,10 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->text('description')->nullable();
             $table->dateTime('start_at');
             $table->dateTime('end_at');
-            $table->string('status')->default('pending');
-            $table->foreignId('user_id')->nullable();
+            $table->string('target_group');
             $table->timestamps();
         });
     }

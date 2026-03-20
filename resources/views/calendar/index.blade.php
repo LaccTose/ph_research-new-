@@ -14,15 +14,10 @@
     </style>
 
     <div class="antialiased font-soa-chingcha">
-        <div x-data="app()" x-init="initDate();
-        getNoOfDays()" x-cloak>
+        <div x-data="app()" x-init="initDate()" x-cloak>
             <div class="container py-2 mx-auto">
                 <div class="flex flex-col md:flex-row md:items-stretch gap-3 md:gap-1.5">
-                    <!-- <div class="mb-4 text-xl font-bold text-gray-800">
-    Schedule Tasks
-  </div> -->
 
-                    <!--filter-->
                     <div class="flex flex-col w-full md:w-1/4 md:h-auto">
                         <div class="h-full p-4">
                             <div id="dropdown" class="flex flex-col flex-1 p-4 bg-white rounded-lg shadow">
@@ -31,418 +26,360 @@
                                 </h6>
                                 <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
                                     <li class="flex items-center">
-                                        <input id="apple" type="checkbox" value=""
+                                        <input id="group_1" type="checkbox" value="ผู้อำนวยการสำนักงาน/กอง" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="apple"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_1" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             ผู้อำนวยการสำนักงาน/กอง
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
-                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <input id="group_2" type="checkbox" value="ผู้อำนวยการศูนย์บริการสาธารณสุข" x-model="selectedGroup"
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        <label for="group_2" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             ผู้อำนวยการศูนย์บริการสาธารณสุข
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
-                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <input id="group_3" type="checkbox" value="แพทย์" x-model="selectedGroup"
+                                            class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
+                                        <label for="group_3" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             แพทย์
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
+                                        <input id="group_4" type="checkbox" value="ทันตแพทย์" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_4" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             ทันตแพทย์
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
+                                        <input id="group_5" type="checkbox" value="นายสัตวแพทย์" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_5" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             นายสัตวแพทย์
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
+                                        <input id="group_6" type="checkbox" value="เภสัชกร" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_6" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             เภสัชกร
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
+                                        <input id="group_7" type="checkbox" value="พยาบาลวิชาชีพ" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_7" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             พยาบาลวิชาชีพ
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
+                                        <input id="group_8" type="checkbox" value="นักวิชาการสาธารณสุข" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_8" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             นักวิชาการสาธารณสุข
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
+                                        <input id="group_9" type="checkbox" value="นักวิชาการสุขาภิบาล" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_9" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             นักวิชาการสุขาภิบาล
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
+                                        <input id="group_10" type="checkbox" value="นักสังคมสงเคราะห์" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_10" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             นักสังคมสงเคราะห์
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
+                                        <input id="group_11" type="checkbox" value="นักรังสีการแพทย์" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_11" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             นักรังสีการแพทย์
                                         </label>
                                     </li>
-
                                     <li class="flex items-center">
-                                        <input id="fitbit" type="checkbox" value=""
+                                        <input id="group_12" type="checkbox" value="นักจิตวิทยา" x-model="selectedGroup"
                                             class="w-4 h-4 border-gray-300 rounded bg-gray-50 text-primary-600 focus:ring-primary-600 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500" />
-
-                                        <label for="fitbit"
-                                            class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
+                                        <label for="group_12" class="ml-2 text-sm font-medium text-gray-800 dark:text-gray-100">
                                             นักจิตวิทยา
                                         </label>
                                     </li>
+                                </ul>
                             </div>
-                            <div class="flex flex-col">
-                                {{-- <button type="button"
-                            class="w-56 px-2 py-2 font-semibold text-white bg-green-700 border rounded-lg shadow-sm hover:bg-green-600"
-                            @click="window.location.href='{{ route('bookings.create') }}'">
-                            บันทึกข้อมูลการจัดประชุม
-                        </button> --}}
-                                {{-- <form action="{{ route('bookings.store') }}" method="POST"> --}}
+                            <div class="flex flex-col mt-4">
                                 <a href="{{ route('booking.create') }}"
-                                    class="w-full py-2 mt-4 font-semibold text-center text-white bg-green-600 border rounded-lg shadow-sm md:w-full hover:bg-green-700">
-                                    เพิ่มการจอง</a>
+                                    class="w-full py-2 font-semibold text-center text-white bg-green-600 border rounded-lg shadow-sm md:w-full hover:bg-green-700">เพิ่มการจอง
+                                </a>
                             </div>
                         </div>
-
                     </div>
 
-                    <!--button-->
                     <div class="flex-1 p-4">
                         <div class="h-full overflow-hidden bg-white rounded-lg shadow">
                             <div class="flex items-center justify-between px-6 py-2 border-b">
-                                <div class="text-lg">
-                                    <button type="button"
-                                        class="px-4 py-2 text-lg font-semibold text-gray-700 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 "
-                                        @click="goToToday(); initDate()">วันนี้
+                                <div class="flex items-center space-x-2 text-lg">
+                                    <button type="button" x-show="view === 'calendar'"
+                                        class="px-4 py-2 text-lg font-semibold text-gray-700 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200"
+                                        @click="goToToday()">วันนี้
+                                    </button>
+                                    <button type="button" x-show="view === 'calendar'"
+                                        class="px-4 py-2 text-lg font-semibold text-gray-700 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200"
+                                        @click="view = 'list'">รายการ
+                                    </button>
+                                    <button type="button" x-show="view === 'list'"
+                                        class="px-4 py-2 text-lg font-semibold text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-100"
+                                        @click="view = 'calendar'">กลับไปปฏิทิน
                                     </button>
                                 </div>
 
-                                <div class="mt-4 mb-4">
-                                    <span x-text="month_names[month]" class="text-3xl text-gray-700"></span>
-                                    <span x-text="displayYear" class="ml-1 text-3xl font-bold text-gray-700"></span>
+                                <div class="mt-4 mb-4 text-center">
+                                    <h2 x-text="month_names[month] + ' ' + displayYear" class="text-3xl font-black tracking-wide text-green-700 uppercase"></h2>
                                 </div>
 
                                 <div class="px-1 border rounded-lg" style="padding-top: 2px;">
-                                    <button type="button"
-                                        class="inline-flex p-1 leading-none transition duration-100 ease-in-out rounded-lg cursor-pointer hover:bg-gray-200"
-                                        @click="prevMonth(); getNoOfDays()">
-                                        <svg class="inline-flex w-6 h-6 leading-none text-gray-500" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15 19l-7-7 7-7" />
-                                        </svg>
+                                    <button type="button" class="p-1 rounded-lg hover:bg-gray-200" @click="prevMonth()">
+                                        <svg class="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
                                     </button>
                                     <div class="inline-flex h-6 border-r"></div>
-                                    <button type="button"
-                                        class="inline-flex items-center p-1 leading-none transition duration-100 ease-in-out rounded-lg cursor-pointer hover:bg-gray-200"
-                                        @click="nextMonth(); getNoOfDays()">
-                                        <svg class="inline-flex w-6 h-6 leading-none text-gray-500" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 5l7 7-7 7" />
-                                        </svg>
+                                    <button type="button" class="p-1 rounded-lg hover:bg-gray-200" @click="nextMonth()">
+                                        <svg class="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                                     </button>
                                 </div>
                             </div>
 
-                            <div>
+                            <div x-show="view === 'calendar'">
                                 <div class="flex flex-wrap border-l">
-                                    <template x-for="(day, index) in days" :key="index">
-                                        <div style="width: 14.28%"
-                                            class="grid justify-center h-10 font-bold leading-none text-gray-700 bg-gray-100 border-r place-items-center">
-                                            <span x-text="day" class="tracking-wide text-gray-600"></span>
+                                    <template x-for="day in days">
+                                        <div style="width: 14.28%" class="grid justify-center h-10 font-bold text-gray-700 bg-gray-100 border-b border-r place-items-center">
+                                            <span x-text="day"></span>
                                         </div>
                                     </template>
                                 </div>
 
-
                                 <div class="flex flex-wrap border-l">
                                     <template x-for="day in blankdays">
-                                        <div style="width: 14.28%; height: 120px"
-                                            class="relative px-4 pt-2 text-center border-b border-r">
-                                            <div x-text="day.date"
-                                                class="flex items-center justify-center w-6 h-6 text-gray-400"></div>
+                                        <div style="width: 14.28%; height: 120px" class="px-4 pt-2 border-b border-r bg-gray-50/50">
+                                            <div x-text="day.date" class="text-gray-300"></div>
                                         </div>
                                     </template>
 
                                     <template x-for="(day, index) in no_of_days" :key="index">
                                         <div style="width: 14.28%; height: 120px"
                                             class="relative px-4 pt-2 border-b border-r">
-                                            <div @click="showEventModal(day.date)" x-text="day.date"
+                                            <div @click="showEventModal(day.date, day.monthOffset)" x-text="day.date"
                                                 class="inline-flex items-center justify-center w-6 h-6 leading-none text-center transition duration-100 ease-in-out rounded-full cursor-pointer"
                                                 :class="{
-                                                    'bg-red-400 text-white': isToday(day.date) && day.isCurrentMonth,
-                                                    'text-gray-700 hover:bg-blue-200': day.isCurrentMonth && !isToday(
-                                                        day.date),
+                                                    'bg-red-400 text-white': isToday(day.date, day.isCurrentMonth),
+                                                    'text-gray-700 hover:bg-blue-200': day.isCurrentMonth && !isToday(day.date, day.isCurrentMonth),
                                                     'text-gray-400': !day.isCurrentMonth
                                                 }">
                                             </div>
 
                                             <div style="height: 80px;" class="mt-1 overflow-y-auto">
-                                                {{-- เก็บไว้ก่อน --}}
-                                                {{-- <template
-                                                    x-for="event in events.filter(e =>
-                                                        e.event_date === new Date(year, month + day.monthOffset, day.date)
-                                                            .toISOString().slice(0,10)
-                                                    )"
-                                                >
-                                                    <div class="px-2 py-1 mt-1 overflow-hidden border rounded-lg cursor-pointer"
-                                                        @click="showEventDetail(event)"
-                                                        :class="{
-                                                            'border-blue-200 text-blue-800 bg-blue-100': event.event_theme === 'blue',
-                                                            'border-red-200 text-red-800 bg-red-100': event.event_theme === 'red',
-                                                            'border-yellow-200 text-yellow-800 bg-yellow-100': event.event_theme === 'yellow',
-                                                            'border-green-200 text-green-800 bg-green-100': event.event_theme === 'green',
-                                                            'border-purple-200 text-purple-800 bg-purple-100': event.event_theme === 'purple'
-                                                        }">
-                                                        <p x-text="event.event_title" class="text-sm leading-tight truncate"></p>
-                                                    </div>
-                                                </template> --}}
-                                                <template
-                                                    x-for="event in bookings.filter(b =>new Date(b.start_at).toDateString() === new Date(year, month, day.date).toDateString())">
-                                                    <div class="px-2 py-1 mt-1 text-xs text-white bg-green-600 rounded cursor-pointer"
-                                                        @click="showEventDetail(event)" x-text="event.title">
+                                                <template x-for="event in getFilteredBookings(year, month + day.monthOffset, day.date)" :key="event.id">
+                                                    <div class="px-2 py-1 mt-1 text-xs text-white truncate bg-green-600 rounded cursor-pointer"
+                                                        @click="showEventDetail(event)">
+                                                        <span x-text="new Date(event.start_at).toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'})"></span>
+                                                        <span x-text="event.title"></span>
                                                     </div>
                                                 </template>
                                             </div>
                                         </div>
                                     </template>
+                                    <!--ใหม่-->
+                                                <!--<template x-for="day in no_of_days">
+                                                    <div style="width: 14.28%; height: 120px" class="relative px-4 pt-2 border-b border-r">
+                                                        <div x-text="day.date" class="inline-flex items-center justify-center w-6 h-6 rounded-full"
+                                                            :class="isToday(day.date, day.isCurrentMonth) ? 'bg-red-500 text-white' : (day.isCurrentMonth ? 'text-gray-700' : 'text-gray-300')">
+                                                        </div>
+                                                        <div class="mt-1 overflow-y-auto" style="height: 80px;">
+                                                            <template x-for="event in getFilteredBookings(year, month + day.monthOffset, day.date)">
+                                                                <div class="px-2 py-1 mt-1 text-[10px] text-white bg-green-600 rounded cursor-pointer truncate" @click="showEventDetail(event)">
+                                                                    <span x-text="new Date(event.start_at).toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'})"></span>
+                                                                    <span x-text="event.title"></span>
+                                                                </div>
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </template>-->
+                                    <!--ใหม่-->
                                 </div>
                             </div>
+                            <div x-show="view === 'list'" class="p-6">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm text-left text-gray-500">
+                                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                            <tr>
+                                                <th class="px-4 py-3">วันที่</th>
+                                                <th class="px-4 py-3">เวลา</th>
+                                                <th class="px-4 py-3">ชื่อเรื่อง</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template x-for="event in getMonthBookings()" :key="event.id">
+                                                <tr class="bg-white border-b cursor-pointer hover:bg-gray-50" @click="showEventDetail(event)">
+                                                    <td class="px-4 py-3 font-medium text-gray-900" x-text="new Date(event.start_at).toLocaleDateString('th-TH')"></td>
+                                                    <td class="px-4 py-3" x-text="new Date(event.start_at).toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'})"></td>
+                                                    <td class="px-4 py-3" x-text="event.title"></td>
+                                                    <td class="px-4 py-3" x-text="event.target_group"></td>
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                                    <template x-if="getMonthBookings().length === 0">
+                                        <div class="py-10 text-center text-gray-500">-- ไม่พบรายการ --</div>
+                                    </template>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
 
-
-            <!--pop up-->
-            <div style=" background-color: rgba(0, 0, 0, 0.8)"
-                class="fixed top-0 bottom-0 left-0 right-0 z-40 w-full h-full"
-                x-show.transition.opacity="openEventModal">
+             <!-- 1 -->
+            <div style="background-color: rgba(0, 0, 0, 0.8)" 
+                class="fixed inset-0 z-50 flex items-center justify-center" x-show="openEventModal" x-cloak>
                 <div class="relative left-0 right-0 max-w-xl p-4 mx-auto mt-24 overflow-hidden ">
-                    <div
-                        @click="openEventModal = false; 
-                            selectedEvent = null;
-                            event_title = '';
-                            event_date = '';
-                            event_theme = 'blue';">
+                    <div @click="openEventModal = false">
                         <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path
                                 d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" />
                         </svg>
                     </div>
 
-                    <!-- pop up -->
                     <div class="block w-full p-8 overflow-hidden bg-white rounded-lg shadow">
-
                         <h2 class="pb-2 mb-6 text-2xl font-bold text-gray-800 border-b">
-                            บันทึกข้อมูลการจัดประชุม/การจัดกิจกรรม/การจัดงาน สำนักอนามัย กรุงเทพมหานคร</h2>
+                            รายละเอียดข้อมูลการจัดประชุม/การจัดกิจกรรม/การจัดงาน สำนักอนามัย กรุงเทพมหานคร</h2>
 
                         <div class="mb-4">
-                            <label
-                                class="block mb-1 text-sm font-bold tracking-wide text-gray-800">ชื่อเรื่องการจัดประชุม/การจัดกิจกรรม/การจัดงาน</label>
-                            <input
-                                class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:bg-white focus:border-blue-500"
-                                type="text" x-model="event_title">
+                            <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">ชื่อเรื่องการจัดประชุม/การจัดกิจกรรม/การจัดงาน</label>
+                            <input class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-100 border rounded-lg appearance-none focus:outline-none"
+                                type="text" x-model="event_title" readonly>
                         </div>
 
-                        <!---->
                         <div class="mb-4">
                             <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">วันที่จัด</label>
-                            <input
-                                class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-lg appearance-none focus:outline-none focus:bg-white focus:border-blue-500"
+                            <input class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-100 border rounded-lg appearance-none focus:outline-none"
                                 type="text" x-model="event_date" readonly>
                         </div>
-
-                        <!---->
-                        <div class="inline-block w-64 mb-4">
-                            <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">Select a
-                                theme</label>
-                            <div class="relative">
-                                {{--<select @change="event_theme = $event.target.value;" x-model="event_theme"
-                                    class="block w-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-gray-200 border-2 border-gray-200 rounded-lg appearance-none hover:border-gray-500 focus:outline-none focus:bg-white focus:border-blue-500">
-                                    <template x-for="(theme, index) in themes">
-                                        <option :value="theme.value" x-text="theme.label"></option>
-                                    </template>
-
-                                </select>--}}
-                                <div
-                                    class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                    </svg>
-                                </div>
-                            </div>
+                        
+                        <div class="mb-4">
+                            <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">รายละเอียดเพิ่มเติม</label>
+                            <textarea class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-100 border rounded-lg appearance-none focus:outline-none" 
+                                x-model="event_description" rows="3" readonly></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">กลุ่มเป้าหมาย</label>
+                            <p x-text="selectedEvent ? selectedEvent.target_group : '-'" class="p-2 bg-gray-100 rounded"></p>
                         </div>
 
                         <div class="mt-8 text-right">
                             <button type="button"
                                 class="px-4 py-2 mr-2 font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100"
-                                @click="openEventModal = !openEventModal">
-                                ยกเลิก
-                            </button>
-                            <button type="button"
-                                class="px-4 py-2 font-semibold text-white bg-gray-800 border border-gray-700 rounded-lg shadow-sm hover:bg-gray-700"
-                                @click="addEvent()">
-                                บันทึก
+                                @click="openEventModal = false">
+                                ปิดหน้าต่าง
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /Modal -->
+            
+            <!-- 2 -->
+            <div style=" background-color: rgba(0, 0, 0, 0.8)" class="fixed inset-0 z-40 w-full h-full"
+                x-show.transition.opacity="openMonthListModal" x-cloak>
+                <div class="relative flex flex-col max-w-4xl p-4 mx-auto mt-16 bg-white rounded-lg shadow-xl" 
+                    @click.away="openMonthListModal = false" style="height: 80vh;">
+                    
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b">
+                        <h2 class="text-2xl font-bold text-gray-800">
+                            รายการกิจกรรมประจำเดือน <span x-text="month_names[month] + ' ' + displayYear"></span>
+                        </h2>
+                        <button @click="openMonthListModal = false" class="text-3xl text-gray-500 hover:text-gray-800">&times;</button>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto">
+                        <template x-if="getMonthBookings().length > 0">
+                            <table class="w-full text-sm text-left text-gray-500">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-4 py-3">วันที่</th>
+                                        <th scope="col" class="px-4 py-3">เวลา</th>
+                                        <th scope="col" class="px-4 py-3">ชื่อเรื่อง</th>
+                                        <th scope="col" class="px-4 py-3">กลุ่มเป้าหมาย</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template x-for="event in getMonthBookings()" :key="event.id">
+                                        <tr class="bg-white border-b cursor-pointer hover:bg-gray-50" @click="openMonthListModal = false; showEventDetail(event)">
+                                            <td class="px-4 py-3 font-medium text-gray-900" x-text="new Date(event.start_at).toLocaleDateString('th-TH', {day:'2-digit', month:'2-digit', year:'numeric'})"></td>
+                                            <td class="px-4 py-3" x-text="new Date(event.start_at).toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'})"></td>
+                                            <td class="px-4 py-3" x-text="event.title"></td>
+                                            <td class="px-4 py-3" x-text="event.target_group"></td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </template>
+                        <template x-if="getMonthBookings().length === 0">
+                            <div class="py-10 text-center text-gray-600">
+                                -- ไม่พบรายการกิจกรรมในเดือนนี้ --
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script>
-            const bookings = @json($bookings);
-            const MONTH_NAMES = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม',
-                'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
-            ];
+            // กำหนดค่าคงที่ไว้นอก app function เพื่อประหยัด memory
+            const MONTH_NAMES = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
             const DAYS = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
-
-            function toISO(dateObj) {
-                // คืนค่า yyyy-mm-dd จาก Date หรือจาก (y,m,d)
-                const y = dateObj.getFullYear();
-                let m = dateObj.getMonth() + 1;
-                let d = dateObj.getDate();
-                if (m < 10) m = '0' + m;
-                if (d < 10) d = '0' + d;
-                return `${y}-${m}-${d}`;
-            }
 
             function app() {
                 return {
+                    view: 'calendar',
                     month_names: MONTH_NAMES,
                     days: DAYS,
                     month: 0,
                     year: 0,
-                    displayYear: '',
+                    displayYear: '', // ปี พ.ศ.
                     no_of_days: [],
                     blankdays: [],
+                    selectedGroup: [], // เก็บกลุ่มเป้าหมายที่เลือก
+                    bookings: @json($bookings), // ข้อมูลจาก Database
 
-                    // DAYS constant ข้างบนใช้ใน template header
-                    events: [
-                        // เก็บเป็น ISO string (yyyy-mm-dd) เพื่อเปรียบเทียบง่าย
-                        {
-                            event_date: toISO(new Date(2020, 3, 1)),
-                            event_title: "April Fool's Day",
-                            event_theme: 'blue'
-                        },
-                        {
-                            event_date: toISO(new Date(2020, 3, 10)),
-                            event_title: "Birthday",
-                            event_theme: 'red'
-                        },
-                        {
-                            event_date: toISO(new Date(2020, 3, 16)),
-                            event_title: "Upcoming Event",
-                            event_theme: 'green'
-                        }
-                    ],
+                    // ตัวแปรสำหรับ Modal รายละเอียด
+                    openEventModal: false,
                     selectedEvent: null,
                     event_title: '',
                     event_date: '',
-                    event_theme: 'blue',
-                    /*themes: [{
-                            value: "blue",
-                            label: "Blue Theme"
-                        },
-                        {
-                            value: "red",
-                            label: "Red Theme"
-                        },
-                        {
-                            value: "yellow",
-                            label: "Yellow Theme"
-                        },
-                        {
-                            value: "green",
-                            label: "Green Theme"
-                        },
-                        {
-                            value: "purple",
-                            label: "Purple Theme"
-                        }
-                    ],*/
-                    openEventModal: false,
+                    event_description: '',
 
-                    goToToday() {
-                        const today = new Date();
-                        this.month = today.getMonth();
-                        this.year = today.getFullYear();
-                        this.getNoOfDays();
-                    },
+                    // ตัวแปรสำหรับ Modal รายชื่อกิจกรรมประจำเดือน
+                    openMonthListModal: false,
 
                     initDate() {
                         let today = new Date();
                         this.month = today.getMonth();
                         this.year = today.getFullYear();
                         this.displayYear = this.year + 543;
-                        // this.datepickerValue = toISO(new Date(this.year, this.month, today.getDate())); // ถ้าจะใช้
+                        this.getNoOfDays(); // คำนวณวันตั้งแต่วินาทีแรกที่โหลด
                     },
 
-                    // ปรับ prev/next ให้ยอมข้ามปี และอัพเดต displayYear 
+                    goToToday() {
+                        const today = new Date();
+                        this.month = today.getMonth();
+                        this.year = today.getFullYear();
+                        this.displayYear = this.year + 543;
+                        this.getNoOfDays();
+                    },
+
                     prevMonth() {
                         this.month--;
                         if (this.month < 0) {
@@ -463,87 +400,80 @@
                         this.getNoOfDays();
                     },
 
-                    // ตรวจว่าเป็นวันวันนี้จริงๆ (เปรียบเทียบทั้งปี/เดือน/วัน)
-                    isToday(dayDate, dayIsCurrentMonth = true) {
-                        // dayDate อาจจะเป็นตัวเลขวันที่ (1..31) หรือ ISO string
+                    // ฟังก์ชันตรวจว่าเป็นวันวันนี้จริงหรือไม่
+                    isToday(dayDate, isCurrentMonth) {
+                        if (!isCurrentMonth) return false;
                         const today = new Date();
-                        const todayIso = toISO(today);
-
-                        let checkIso;
-                        if (typeof dayDate === 'string') {
-                            // assume ISO yyyy-mm-dd
-                            checkIso = dayDate;
-                        } else if (!dayIsCurrentMonth) {
-                            // ถ้าเป็นช่องของ prev/next month ฟังก์ชันนี้มักจะไม่ถูกเรียกเพื่อ highlight
-                            checkIso = '';
-                        } else {
-                            const d = new Date(this.year, this.month, dayDate);
-                            checkIso = toISO(d);
-                        }
-                        return todayIso === checkIso;
+                        const d = new Date(this.year, this.month, dayDate);
+                        return today.toDateString() === d.toDateString();
                     },
 
-                    showEventModal(date, monthOverride = null, yearOverride = null) {
-                        let iso;
-                        if (typeof date === 'number') {
-                            const m = monthOverride !== null ? monthOverride : this.month;
-                            const y = yearOverride !== null ? yearOverride : this.year;
-                            iso = toISO(new Date(y, m, date));
-                        } else {
-                            iso = date;
-                        }
-                        this.selectedEvent = null;
-                        this.event_title = '';
-                        this.event_theme = 'blue';
-
-                        this.event_date = iso;
-                        this.openEventModal = true;
+                    // ฟังก์ชันดึงรายการกิจกรรมประจำเดือนนี้ (ใช้สำหรับปุ่ม 'รายการ')
+                    getMonthBookings(){
+                        return this.bookings.filter(booking => {
+                            const bDate = new Date(booking.start_at);
+                            return bDate.getMonth() === this.month && bDate.getFullYear() === this.year;
+                        }).sort((a, b) => {
+                            // เรียงลำดับตามวันที่และเวลา
+                            return new Date(a.start_at) - new Date(b.start_at);
+                        });
                     },
 
-                    showEventDetail(event) {
+                    // ฟังก์ชันดึงรายการกิจกรรมประจำวัน (ใช้แสดงในช่องวันที่) พร้อม filter กลุ่มเป้าหมาย
+                    getFilteredBookings(year, month, day){
+                        // ตรวจสอบ offset เดือน (เช่น วันที่ของเดือนถัดไปมาโชว์ในเดือนปัจจุบัน)
+                        const checkDateStr = new Date(year, month, day).toDateString();
+
+                        return this.bookings.filter(booking => {
+                            // เช็ควันที่ว่าตรงกันหรือไม่
+                            const bookingDateStr = new Date(booking.start_at).toDateString();
+                            const isSameDate = bookingDateStr === checkDateStr;
+                            
+                            // เช็คการ filter กลุ่มเป้าหมาย (ถ้าไม่เลือกเลยให้โชว์หมด ถ้าเลือกให้โชว์เฉพาะกลุ่มที่เลือก)
+                            const matchesGroup = this.selectedGroup.length === 0 || this.selectedGroup.includes(booking.target_group);
+                            return isSameDate && matchesGroup;
+                        })
+                            .sort((a, b) => {
+                            // เรียงลำดับตามเวลาภายในวันเดียว
+                            return new Date(a.start_at) - new Date(b.start_at);
+                        });
+                    },
+
+                    // ฟังก์ชันแสดง Pop-up (ขอเก็บฟังก์ชันเดิมไว้เผื่อคุณใช้สำหรับ Modal อื่น)
+                    showEventModal(date, monthOffset = 0) {
+                        // ไม่ได้ใช้เนื่องจากเราเปลี่ยนไปใช้ pop-up รายละเอียดแทน
+                        // this.openEventModal = true;
+                    },
+
+                    // ฟังก์ชันแสดง Pop-up รายละเอียดกิจกรรม
+                    showEventDetail(event){
                         this.selectedEvent = event;
-                        this.event_title = event.event_title;
-                        this.event_date = event.event_date;
-                        this.event_theme = event.event_theme;
+                        this.event_title = event.title;
+                        
+                        // ฟอร์แมตวันที่แบบไทย
+                        this.event_date = new Date(event.start_at).toLocaleDateString('th-TH', {
+                            day: 'numeric', month: 'long', year: 'numeric'
+                        });
+                        
+                        this.event_description = event.description || 'ไม่พบรายละเอียดเพิ่มเติม';
                         this.openEventModal = true;
-                    },
-
-                    addEvent() {
-                        if (this.event_title == '') return;
-
-                        if (this.selectedEvent) {
-                            this.selectedEvent.event_title = this.event_title;
-                            this.selectedEvent.event_theme = this.event_theme;
-                        } else {
-                            this.events.push({
-                                event_date: this.event_date,
-                                event_title: this.event_title,
-                                event_theme: this.event_theme
-                            });
-                        }
-
-                        // clear
-                        this.selectedEvent = null;
-                        this.event_title = '';
-                        this.event_date = '';
-                        this.event_theme = 'blue';
-                        this.openEventModal = false;
                     },
 
                     getNoOfDays() {
-                        // จำนวนนวันของเดือนปัจจุบัน
+                        // จำนวนวันของเดือนปัจจุบัน
                         let daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+                        // วันแรกของเดือนคือวันอะไรในสัปดาห์ (0=อาทิตย์, 6=เสาร์)
                         let firstDayOfMonth = new Date(this.year, this.month, 1).getDay();
-                        let prevMonthDays = new Date(this.year, this.month, 0).getDate();
+                        // จำนวนวันของเดือนก่อนหน้า
+                        let prevMonthLastDay = new Date(this.year, this.month, 0).getDate();
 
-                        // วันที่ของเดือนก่อน (ใช้ในช่องว่าง)
+                        // วันที่ของเดือนก่อนหน้า (ใช้เติมช่องว่าง)
                         let blankdaysArray = [];
                         for (let i = firstDayOfMonth - 1; i >= 0; i--) {
                             blankdaysArray.push({
-                                date: prevMonthDays - i,
+                                date: prevMonthLastDay - i,
                                 isCurrentMonth: false,
-                                // เพื่อให้ template รู้เดือน/ปีของช่องนี้ (กรณีต้องการ showEventModal ด้วย)
-                                monthOffset: -1
+                                monthOffset: -1 // บอกว่านี่คือเดือนก่อนหน้า
                             });
                         }
 
@@ -553,33 +483,27 @@
                             daysArray.push({
                                 date: i,
                                 isCurrentMonth: true,
-                                monthOffset: 0
+                                monthOffset: 0 // บอกว่านี่คือเดือนปัจจุบัน
                             });
                         }
 
-                        // เติมช่องของเดือนถัดไป
-                        const totalCells = 42; // 6 แถว * 7 วัน
+                        // คำนวณว่าต้องเติมเดือนถัดไปกี่วันให้ครบ 6 แถว (42 ช่อง)
+                        const totalCells = 42;
+                        let remainingCells = totalCells - (blankdaysArray.length + daysArray.length);
                         let nextMonthDays = [];
-                        let remaining = totalCells - (blankdaysArray.length + daysArray.length);
-                        for (let i = 1; i <= remaining; i++) {
-                            nextMonthDays.push({
+                        for (let i = 1; i <= remainingCells; i++) {
+                            daysArray.push({ // ใส่ต่อท้าย daysArray เดิมไปเลยเพื่อความง่าย
                                 date: i,
                                 isCurrentMonth: false,
-                                monthOffset: +1
+                                monthOffset: 1 // บอกว่านี่คือเดือนถัดไป
                             });
                         }
 
                         this.blankdays = blankdaysArray;
-                        // เก็บ no_of_days เป็น object ของ current month + next month (เพื่อให้ template ใช้งานได้)
-                        this.no_of_days = daysArray;
+                        this.no_of_days = daysArray; // รวมทั้งเดือนปัจจุบันและถัดไป
                     },
-
-
-
                 }
             }
         </script>
-
-
     </div>
 </x-app-layout>
