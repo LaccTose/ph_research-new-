@@ -14,7 +14,8 @@ class CalendarController extends Controller
             'title',
             'start_at',
             'end_at',
-            'status',
+            'description',
+            'target_group'
         )->get();
 
         return view('calendar.index', compact('bookings'));

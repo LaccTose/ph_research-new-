@@ -67,14 +67,13 @@ Route::prefix('calendar')->group(function () {
     Route::get('/', [CalendarController::class, 'index'])
         ->name('calendar.index');
 
-    // ใช้ resource เฉพาะ create/store/index
     Route::get('/booking', [BookingController::class, 'index'])
         ->name('booking.index');
 
     Route::get('/booking/create', [BookingController::class, 'create'])
         ->name('booking.create');
 
-    Route::post('/booking', [BookingController::class, 'store'])
+    Route::post('/booking/store', [BookingController::class, 'store'])
         ->name('booking.store');
 
 });

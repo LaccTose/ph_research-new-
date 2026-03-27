@@ -8,21 +8,11 @@ class Booking extends Model
 {
     protected $fillable = [
         'title',
+        'description',
         'start_at',
         'end_at',
-        'status',
-        'user_id',
-        'chairman',
-        'targets',
-        'participants',
-        'department',
-        'coodinatot',
-        'phone',
+        'target_group',
     ];
 
-    protected $dates = [
-        'start_at'=>'start_date',
-        'end_at'=>'end_date',
-    ];
 }
 
