@@ -18,9 +18,9 @@
         <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900">
                 {{ __('บันทึกรายงาน') }}
-                <div class="grid gap-4 mt-4 sm:grid-cols-1 lg:grid-cols-2">
+                <div class="grid gap-4 mt-4 sm:grid-cols-1 lg:grid-cols-1">
 
-                <div class="p-4">
+                {{--<div class="p-4">
                     <a href="{{ route('umsc_report.index') }}"
                         class="block max-w-sm p-6 text-lg text-center text-green-700 border rounded-md shadow-xs hover:bg-gray-50 bg-neutral-primary-soft border-default rounded-base hover:bg-neutral-secondary-medium">
                         ศูนย์สนับสนุนบริการสุขภาพเวชศาสตร์เขตเมือง (UMSC)
@@ -46,7 +46,7 @@
                         class="block max-w-sm p-6 text-lg text-center text-green-700 border rounded-md shadow-xs hover:bg-gray-50 bg-neutral-primary-soft border-default rounded-base hover:bg-neutral-secondary-medium">
                         ศูนย์บริการสาธารณสุขพลัส (ศบส.พลัส)
                     </a>
-                </div>
+                </div>--}}
 
                 {{--<div class="p-4">
                     <a href="{{ route('umsc_report.index') }}"
@@ -75,7 +75,17 @@
                         ศูนย์บริการสาธารณสุขพลัส (ศบส.พลัส) 
                     </a>
                 </div>--}}
+
+                <div style="width: 100%; overflow: hidden;">
+                    <iframe style="width: 100%; height: 700px; border: none;"
+                            src="https://lookerstudio.google.com/embed/reporting/0e771bec-d831-413a-9681-bf8ba9ae1c34/page/page_12345"
+                            title="Dashboard รายงานศูนย์สนับสนุนบริการสุขภาพฯ"
+                            allowfullscreen 
+                            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+                    </iframe>
                 </div>
             </div>
+        </div>
 
 </x-app-layout>
+{{--<iframe width="600" height="338" src="https://lookerstudio.google.com/embed/reporting/0e771bec-d831-413a-9681-bf8ba9ae1c34/page/page_12345" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>--}}

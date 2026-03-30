@@ -10,6 +10,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 
 
@@ -40,14 +41,16 @@ Route::prefix('primary')->group(function () {
         ->name('primary.dashboard');
 
     Route::prefix('report')->group(function () {
+        Route::resource('dashboard', DashboardController::class)->only(['index']);
         Route::resource('umsc_report', UMSCReportController::class);
         Route::resource('smc_report', SMCReportController::class);
         Route::resource('pcu_report', PCUReportController::class);
         Route::resource('phcp_report', PHCPReportController::class);
+        Route::resource('service', ServiceController::class);
     });
 
-    Route::get('/services', [ServiceController::class, 'index'])
-        ->name('primary.services');
+    /*Route::get('/services', [ServiceController::class, 'index'])
+        ->name('primary.services');*/
 });
 
 

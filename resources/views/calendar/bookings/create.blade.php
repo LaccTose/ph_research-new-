@@ -34,6 +34,10 @@
         .flatpickr-innerContainer+div {
             margin-top: 5px;
         }
+
+        .textarea{
+            resize: none;
+        }
     </style>
 
     @if ($errors->any())
@@ -63,7 +67,7 @@
                 @csrf
 
                 <fieldset class="p-6 mb-8 bg-white border-t-4 border-green-700 rounded-lg shadow-sm">
-                    <legend class="px-4 text-xl font-bold text-green-800">หัวข้อการประชุม/การจัดกิจกรรม/การจัดงาน
+                    <legend class="px-4 text-xl font-bold text-green-800">หัวข้อการประชุม/การจัดกิจกรรม/การจัดงาน และรายละเอียด
                     </legend>
                     <!-- 2.1 ชื่อเรื่อง -->
                     <div>
@@ -73,6 +77,14 @@
                         <input type="text" name="title" required
                             placeholder="โปรดระบุชื่อกิจกรรมหรือหัวเรื่องการประชุม"
                             class="w-full text-sm text-gray-700 placeholder-gray-400 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
+                    </div>
+                    <div class="mt-4">
+                        <label 
+                            class="block mb-1 text-sm text-gray-700">รายละเอียดเพิ่มเติม
+                        </label>
+                        <textarea name="description"
+                            placeholder="โปรดระบุรายละเอียดเพิ่มเติม หรือข้อมูลอื่นๆ ที่เกี่ยวข้อง"
+                            class="w-full text-sm text-gray-700 placeholder-gray-400 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"></textarea>
                     </div>
                 </fieldset>
 

@@ -25,9 +25,9 @@
                         {{ __('งานวิจัย') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('primary.services')" :active="request()->routeIs('primary.services')">
+                    {{--<x-nav-link :href="route('primary.services')" :active="request()->routeIs('primary.services')">
                         {{ __('การให้บริการ') }}
-                    </x-nav-link>
+                    </x-nav-link>--}}
 
                     <x-nav-link :href="route('calendar.index')" :active="request()->routeIs('calendar.index')">
                         {{ __('ปฏิทินการจัดประชุม') }}
@@ -109,11 +109,11 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
-        <div class="pt-2 pb-3 space-y-1">
+        {{--<div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('primary.services')" :active="request()->routeIs('primary.services')">
                 {{ __('Service') }}
             </x-responsive-nav-link>
-        </div>
+        </div>--}}
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('calendar.index')" :active="request()->routeIs('calendar.index')">
                 {{ __('Calendar') }}
