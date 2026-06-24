@@ -1,4 +1,5 @@
-<x-app-layout>
+{{-- เก่า --}}
+{{--<x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('การให้บริการ') }}
@@ -18,9 +19,7 @@
                     (Urban Medicine Service Center : UMSC)
                 </p>
             </div>
-            {{-- <div class="search-box">
-                <input type="text" id="searchInput" placeholder="พิมพ์ชื่อศูนย์บริการหรือเขตเพื่อค้นหา...">
-            </div> --}}
+            
             <div class="flex justify-center">
                 <div class="w-full max-w-sm min-w-[200px] relative mb-6">
                     <div class="relative">
@@ -885,4 +884,4 @@
             });
         </script>
     @endpush
-</x-app-layout>
+</x-app-layout>--}}

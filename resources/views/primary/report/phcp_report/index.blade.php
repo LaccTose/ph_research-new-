@@ -1,16 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('รายงานการให้บริการ') }}
+            {{ __('รายงานการให้บริการ การดูแลรักษาและสังเกตอาการผู้ป่วยในศูนย์บริการสาธารณสุข (ศบส.พลัส)') }}
         </h2>
     </x-slot>
-    <div class="p-6">
-        การดูแลรักษาและสังเกตอาการผู้ป่วยในศูนย์บริการสาธารณสุข (ศบส.พลัส)
-       <p class="mt-4">
-         <a href="{{ route('phcp_report.create') }}"
-           class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
-           + เพิ่มรายงานใหม่
-        </a>
-       </p>
+
+    <div class="py-2">
+        <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+            <div class="flex flex-col gap-4 p-6 md:flex-row">
+                <div class="flex gap-4 p-6">
+                    <a href="{{ route('phcp_report.dashboard') }}"
+                        class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
+                        Dashboard
+                    </a>
+                    <a href="{{ route('phcp_report.create') }}"
+                        class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
+                        เพิ่มรายงานใหม่
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </x-app-layout>

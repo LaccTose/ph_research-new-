@@ -1,56 +1,40 @@
-<x-app-layout>
+{{-- เก่า --}}
+{{--<x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('บันทึกข้อมูลรายงานการให้บริการ') }}
+            {{ __('ระบบบันทึกข้อมูลรายงานการให้บริการ') }}
         </h2>
     </x-slot>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
 
-    <div class="py-2">
-        <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-            <div class="flex flex-col gap-4 p-6 md:flex-row">
-                <div class="flex gap-4">
-                    <a href="{{ route('dashboard.index') }}"
-                        class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
-                        Dashboard
-                    </a>
-                    <a href="{{ route('umsc_report.index') }}"
-                        class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
-                        รายงานการให้บริการ
-                    </a>
-                    <a href="{{ route('service.index') }}"
-                        class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
-                        การให้บริการ
-                    </a>
-                </div>
-            </div>
-            <fieldset class="p-4 bg-white border-t-4 border-green-800 shadow-sm">
+    <div class="py-6 bg-green-50">
 
-                <div class="p-6 text-gray-900">
-                    <!-- Header -->
-                    <div class="mb-8 text-center">
-                        <h1 class="text-2xl font-bold text-green-800 sm:text-2xl md:text-3xl">
-                            ระบบบันทึกข้อมูลรายงานการให้บริการ
-                        </h1>
-                        <p class="mt-2 text-lg text-green-700">
-                            ศูนย์สนับสนุนบริการสุขภาพเวชศาสตร์เขตเมือง (Urban Medicine Service Center : UMSC)
-                        </p>
-                    </div>
+
+        <div class="p-6 mx-auto bg-white shadow-lg max-w-7xl sm:p-8 rounded-2xl">
+           
+            
+                <!-- Header -->
+                <div class="mb-8 text-center">
+                    <h1 class="text-2xl font-bold text-green-800 sm:text-2xl md:text-3xl">
+                        ระบบบันทึกข้อมูลรายงานการให้บริการ
+                    </h1>
+                    <p class="mt-2 text-lg text-green-700">
+                        ศูนย์สนับสนุนบริการสุขภาพเวชศาสตร์เขตเมือง (Urban Medicine Service Center : UMSC)
+                    </p>
                 </div>
 
+                <!-- Form -->
                 <form id="umscForm" novalidate>
                     <!-- Section 1: ข้อมูลทั่วไป -->
                     <fieldset class="p-6 mb-8 bg-white border-t-4 border-green-700 rounded-lg shadow-sm">
                         <legend class="px-4 text-xl font-bold text-green-800">ข้อมูลทั่วไป</legend>
-                        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
                             <div>
                                 <label for="healthCenter" class="block mb-1 text-sm text-gray-700">
                                     ศูนย์บริการสาธารณสุข <span class="text-red-500">*</span>
                                 </label>
                                 <select id="healthCenter" name="healthCenter" required
                                     class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
-                                    <option value="">-- ตัวเลือก --</option>
                                     @for ($i = 1; $i <= 69; $i++)
                                         <option value="{{ $i }}">
                                             ศูนย์บริการสาธารณสุข {{ $i }}
@@ -59,22 +43,48 @@
                                 </select>
                             </div>
 
-                            <div class="mb-4">
-                                <label for="month_year" class="block mb-1 text-sm text-gray-700">
-                                    เลือกเดือนและปี <span class="text-red-500">*</span>
+                            <div>
+                                <label for="month" class="block mb-1 text-sm text-gray-700">
+                                    เดือน <span class="text-red-500">*</span>
                                 </label>
-                                <div class="relative">
-                                    <input type="text" id="month_year" name="month_year" required
-                                        placeholder="คลิกเพื่อเลือกเดือนและปี"
-                                        class="w-full text-sm text-gray-700 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
-                                </div>
+                                <select id="month" name="month" required
+                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
+                                    @php
+                                        $months = [
+                                            'มกราคม',
+                                            'กุมภาพันธ์',
+                                            'มีนาคม',
+                                            'เมษายน',
+                                            'พฤษภาคม',
+                                            'มิถุนายน',
+                                            'กรกฎาคม',
+                                            'สิงหาคม',
+                                            'กันยายน',
+                                            'ตุลาคม',
+                                            'พฤศจิกายน',
+                                            'ธันวาคม',
+                                        ];
+                                    @endphp
+                                    @foreach ($months as $m)
+                                        <option value="{{ $m }}">{{ $m }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="year" class="block mb-1 text-sm text-gray-700">ปี (พ.ศ.)
+                                    <span class="text-red-500">*</span>
+                                </label>
+                                <input type="number" id="year" name="year" required
+                                    class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md focus:ring-green-600 focus:border-green-600"
+                                    value="{{ date('Y') + 543 }}">
                             </div>
                         </div>
                     </fieldset>
 
                     <!-- Section 2: ข้อมูลการให้บริการ -->
                     <fieldset class="p-6 mb-8 bg-white border-t-4 border-green-700 rounded-lg shadow-sm">
-                        <legend class="px-4 text-xl font-bold text-green-800">ข้อมูลการให้บริการ</legend>
+                        <legend class="px-4 text-xl font-bold text-green-800">ตัวอย่างข้อมูลการให้บริการ</legend>
                         <p class="px-4 mb-5 text-xs text-gray-500">
                             (จำนวนการให้บริการ ดังนี้ จุดให้บริการ UMSC ในศูนย์บริการสาธารณสุข, Facebok, โทรศัพท์
                             เป็นต้น)
@@ -97,7 +107,7 @@
                                 </div>
                             </div>
                             <div class="col-span-1">
-                                <label for="healthConsult" class="block mb-1 text-sm text-gray-700">
+                                <label for="healthConsultPeople" class="block mb-1 text-sm text-gray-700">
                                     1. การให้คำปรึกษาปัญหาสุขภาพ และการให้ข้อมูลสุขภาพฯ
                                 </label>
                                 <div class="flex gap-2">
@@ -112,7 +122,7 @@
                                 </div>
                             </div>
                             <div class="col-span-1">
-                                <label for="serviceAdvice" class="block mb-1 text-sm text-gray-700">
+                                <label for="serviceAdvicePeople" class="block mb-1 text-sm text-gray-700">
                                     2. การให้คำแนะนำบริการของศูนย์บริการสาธารณสุข
                                 </label>
                                 <div class="flex gap-2">
@@ -120,16 +130,14 @@
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                         placeholder="คน">
-
-                                    <input type="number" id="serviceAdviceTimes" name="serviceAdviceTimes"
+                                    <input type="number" id="serviceAdvicePeople" name="serviceAdvicePeople"
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง">
                                 </div>
                             </div>
-
                             <div class="col-span-1">
-                                <label for="appointment" class="block mb-1 text-sm text-gray-700">
+                                <label for="appointmentPeople" class="block mb-1 text-sm text-gray-700">
                                     3. การนัดหมายบริการสุขภาพ
                                 </label>
                                 <div class="flex gap-2">
@@ -137,14 +145,14 @@
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                         placeholder="คน">
-                                    <input type="number" id="appointmentTimes" name="appointmentTimes"
+                                    <input type="number" id="appointmentPeople" name="appointmentPeople"
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง">
                                 </div>
                             </div>
                             <div class="col-span-1">
-                                <label for="referralCoord" class="block mb-1 text-sm text-gray-700">
+                                <label for="referralCoordPeople" class="block mb-1 text-sm text-gray-700">
                                     4. การประสานส่งต่อผู้ป่วย
                                 </label>
                                 <div class="flex gap-2">
@@ -152,42 +160,42 @@
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                         placeholder="คน">
-                                    <input type="number" id="referralCoordTimes" name="referralCoordTimes"
+                                    <input type="number" id="referralCoordPeople" name="referralCoordPeople"
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง">
                                 </div>
                             </div>
                             <div class="col-span-1">
-                                <label for="homeVisit" class="block mb-1 text-sm text-gray-700">
+                                <label for="homeVisitPeople" class="block mb-1 text-sm text-gray-700">
                                     5. การประสานการให้บริการเยี่ยมบ้าน
                                 </label>
                                 <div class="flex gap-2">
                                     <input type="number" id="homeVisitPeople" name="homeVisitPeople" min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                         placeholder="คน">
-                                    <input type="number" id="homeVisitTimes" name="homeVisitTimes" min="0"
+                                    <input type="number" id="homeVisitPeople" name="homeVisitPeople" min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง">
                                 </div>
                             </div>
                             <div class="col-span-1">
-                                <label for="disabilityCert" class="block mb-1 text-sm text-gray-700">
+                                <label for="disabilityCertPeople" class="block mb-1 text-sm text-gray-700">
                                     6. การออกเอกสารรับรองความพิการทางการเคลื่อนไหวหรือทางร่างกาย
                                 </label>
                                 <div class="flex gap-2">
-                                    <input type="number" id="disabilityCertPeople" name="disabilityCertPeople"
+                                    <input type="number" id="healthConsultPeople" name="healthConsultPeople"
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                         placeholder="คน">
-                                    <input type="number" id="disabilityCertTimes" name="disabilityCertTimes"
+                                    <input type="number" id="disabilityCertPeople" name="disabilityCertPeople"
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง">
                                 </div>
                             </div>
                             <div class="col-span-1">
-                                <label for="supportRequest" class="block mb-1 text-sm text-gray-700">
+                                <label for="supportRequestPeople" class="block mb-1 text-sm text-gray-700">
                                     7. การขอรับการสนับสนุนอุปกรณ์ช่วยเหลือทางการเคลื่อนไหว/วัสดุทางการแพทย์และสาธารณสุข
                                 </label>
                                 <div class="flex gap-2">
@@ -195,14 +203,14 @@
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                         placeholder="คน">
-                                    <input type="number" id="supportRequestTimes" name="supportRequestTimes"
+                                    <input type="number" id="supportRequestPeople" name="supportRequestPeople"
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง">
                                 </div>
                             </div>
                             <div class="col-span-1">
-                                <label for="telehealth" class="block mb-1 text-sm text-gray-700">
+                                <label for="telehealthPeople" class="block mb-1 text-sm text-gray-700">
                                     8. Telehealth
                                 </label>
                                 <div class="flex gap-2">
@@ -210,28 +218,29 @@
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                         placeholder="คน">
-                                    <input type="number" id="telehealthTimes" name="telehealthTimes" min="0"
+                                    <input type="number" id="telehealthPeople" name="telehealthPeople"
+                                        min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง">
                                 </div>
                             </div>
                             <div class="col-span-1">
-                                <label for="budgetAdvice" class="block mb-1 text-sm text-gray-700">
+                                <label for="telehealthPeople" class="block mb-1 text-sm text-gray-700">
                                     9. ให้คำแนะนำการขอใช้งบประมาณ กองทุนหลักประกันสุขภาพกรุงเทพมหานครฯ
                                 </label>
                                 <div class="flex gap-2">
-                                    <input type="number" id="budgetAdvicePeople" name="budgetAdvicePeople"
+                                    <input type="number" id="telehealthPeople" name="telehealthPeople"
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
                                         placeholder="คน">
-                                    <input type="number" id="budgetAdviceTimes" name="budgetAdviceTimes"
+                                    <input type="number" id="telehealthPeople" name="telehealthPeople"
                                         min="0"
                                         class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง">
                                 </div>
                             </div>
                             <div class="col-span-1">
-                                <label for="others" class="block mb-1 text-sm text-gray-700">
+                                <label for="othersPeople" class="block mb-1 text-sm text-gray-700">
                                     10. อื่นๆ
                                 </label>
                                 <div class="flex gap-2 mb-2">
@@ -257,7 +266,7 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
                             <div class="col-span-1">
-                                <label for="lineOATotal" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOATotalPeople" class="block mb-1 text-sm text-gray-700">
                                     ผู้รับบริการทั้งหมด (LINE OA)
                                 </label>
                                 <div class="flex space-x-2">
@@ -274,7 +283,7 @@
 
                             <!--1.lineOAhealthConsult-->
                             <div class="col-span-1">
-                                <label for="lineOAhealthConsult" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOAhealthConsultPeople" class="block mb-1 text-sm text-gray-700">
                                     1. การให้คำปรึกษาปัญหาสุขภาพ และการให้ข้อมูลสุขภาพฯ
                                 </label>
                                 <div class="flex gap-2">
@@ -291,7 +300,7 @@
 
                             <!--2.lineOAserviceAdvice-->
                             <div class="col-span-1">
-                                <label for="lineOAserviceAdvice" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOAserviceAdvicePeople" class="block mb-1 text-sm text-gray-700">
                                     2. การให้คำแนะนำบริการของศูนย์บริการสาธารณสุข
                                 </label>
                                 <div class="flex gap-2">
@@ -308,7 +317,7 @@
 
                             <!--3.lineOAappointment-->
                             <div class="col-span-1">
-                                <label for="lineOAappointment" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOAappointmentPeople" class="block mb-1 text-sm text-gray-700">
                                     3. การนัดหมายบริการสุขภาพ
                                 </label>
                                 <div class="flex gap-2">
@@ -325,7 +334,7 @@
 
                             <!--4.lineOAreferralCoord-->
                             <div class="col-span-1">
-                                <label for="lineOAreferralCoord" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOAreferralCoordPeople" class="block mb-1 text-sm text-gray-700">
                                     4. การประสานการส่งต่อผู้ป่วย
                                 </label>
                                 <div class="flex gap-2">
@@ -342,7 +351,7 @@
 
                             <!--5.lineOAhomeVisit-->
                             <div class="col-span-1">
-                                <label for="lineOAhomeVisit" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOAhomeVisitPeople" class="block mb-1 text-sm text-gray-700">
                                     5. การประสานการให้บริการเยี่ยมบ้าน
                                 </label>
                                 <div class="flex gap-2">
@@ -359,7 +368,7 @@
 
                             <!--6.lineOAdisabilityCert-->
                             <div class="col-span-1">
-                                <label for="lineOAdisabilityCert" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOAdisabilityCertPeople" class="block mb-1 text-sm text-gray-700">
                                     6. การออกเอกสารรับรองความพิการทางการเคลื่อนไหวหรือทางร่างกาย
                                 </label>
                                 <div class="flex gap-2">
@@ -376,7 +385,7 @@
 
                             <!--7.lineOAsupportRequest-->
                             <div class="col-span-1">
-                                <label for="lineOAsupportRequest" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOAsupportRequestPeople" class="block mb-1 text-sm text-gray-700">
                                     7. การขอรับการสนับสนุนอุปกรณ์ช่วยเหลือทางการเคลื่อนไหว/
                                     วัสดุอุปกรณ์ทางการแพทย์และสาธารณสุข
                                 </label>
@@ -394,7 +403,7 @@
 
                             <!--8.lineOATelehealth-->
                             <div class="col-span-1">
-                                <label for="lineOAtelehealth" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOAtelehealthPeople" class="block mb-1 text-sm text-gray-700">
                                     8. Telehealth
                                 </label>
                                 <div class="flex gap-2">
@@ -409,26 +418,25 @@
                                 </div>
                             </div>
 
-                            <!--9.lineOAbudgetAdvice-->
                             <div class="col-span-1">
-                                <label for="lineOAbudgetAdvice" class="block mb-1 text-sm text-gray-700">
-                                    9. ให้คำแนะนำการขอใช้งบประมาณ กองทุนหลักประกันสุขภาพกรุงเทพมหานครฯ
+                                <label for="telehealthPeople" class="block mb-1 text-sm text-gray-700">
+                                    10. ให้คำแนะนำการขอใช้งบประมาณ กองทุนหลักประกันสุขภาพกรุงเทพมหานครฯ
                                 </label>
                                 <div class="flex gap-2">
-                                    <input type="number" id="lineOAbudgetAdvicePeople"
-                                        name="lineOAbudgetAdvicePeople" min="0"
-                                        class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm line-sum-source-people focus:ring-green-600 focus:border-green-600"
-                                        placeholder="คน">
-                                    <input type="number" id="lineOAbudgetAdviceTimes" name="lineOAbudgetAdviceTimes"
+                                    <input type="number" id="telehealthPeople" name="telehealthPeople"
                                         min="0"
-                                        class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm line-sum-source-times focus:ring-green-600 focus:border-green-600"
+                                        class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-people focus:ring-green-600 focus:border-green-600"
+                                        placeholder="คน">
+                                    <input type="number" id="telehealthPeople" name="telehealthPeople"
+                                        min="0"
+                                        class="w-1/2 p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm sum-source-times focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง">
                                 </div>
                             </div>
 
-                            <!--10.lineOAOther-->
+                            <!--9.lineOAOther-->
                             <div class="col-span-1">
-                                <label for="lineOAothers" class="block mb-1 text-sm text-gray-700">
+                                <label for="lineOAothersPeople" class="block mb-1 text-sm text-gray-700">
                                     10. อื่นๆ
                                 </label>
                                 <div class="flex gap-2 mb-2">
@@ -492,6 +500,7 @@
                         </div>
                     </fieldset>
 
+                    <!-- footer -->
                     <div class="flex items-center justify-between mt-4">
                         <a href="{{ route('umsc_report.index') }}"
                             class="flex items-center font-medium text-green-700 hover:text-green-800">
@@ -514,141 +523,85 @@
                         </div>
                     </div>
                 </form>
-            </fieldset>
+            
         </div>
     </div>
 
+    <!-- JS ส่วนล่าง -->
     @push('scripts')
-        <script src="https://npmcdn.com/flatpickr/dist/l10n/th.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            // ตั้งค่าปีเริ่มต้นเป็น พ.ศ. ปัจจุบัน
+            document.getElementById('year').value = new Date().getFullYear() + 543;
 
-                function formatThaiMonthYear(selectedDates, instance) {
-                    if (instance.altInput && selectedDates.length > 0) {
-                        const date = selectedDates[0];
-                        const thaiMonths = [
-                            "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
-                            "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
-                        ];
-                        const month = thaiMonths[date.getMonth()];
-                        const yearBE = date.getFullYear() + 543;
-
-                        instance.altInput.value = `${month} ${yearBE}`;
-                    }
-                }
-
-                flatpickr("#month_year", {
-                    locale: 'th',
-                    altInput: true,
-                    dateFormat: "Y-m",
-                    disableMobile: true,
-                    plugins: [
-                        new monthSelectPlugin({
-                            shorthand: false,
-                            dateFormat: "Y-m",
-                            altFormat: "F Y",
-                            theme: "light"
-                        })
-                    ],
-                    onReady: function(selectedDates, dateStr, instance) {
-                        // เพิ่มปุ่มล้างค่า (จากแบบที่ 1)
-                        const container = document.createElement('div');
-                        container.className = "p-2 border-t border-gray-200 bg-gray-50 text-right";
-                        const clearBtn = document.createElement('button');
-                        clearBtn.innerHTML = "ล้างค่า";
-                        clearBtn.className = "text-xs font-bold text-red-500 px-2 py-1";
-                        clearBtn.type = "button";
-                        clearBtn.onclick = () => {
-                            instance.clear();
-                            instance.close();
-                        };
-                        container.appendChild(clearBtn);
-                        instance.calendarContainer.appendChild(container);
-
-                        // อัปเดตการแสดงผลเป็น พ.ศ.
-                        formatThaiMonthYear(selectedDates, instance);
-                    },
-                    onValueUpdate: function(selectedDates, dateStr, instance) {
-                        formatThaiMonthYear(selectedDates, instance);
-                    }
+            // ตัวอย่าง SweetAlert เมื่อบันทึก
+            document.getElementById('umscForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'บันทึกข้อมูลสำเร็จ!',
+                    text: 'ข้อมูลถูกส่งเรียบร้อยแล้ว',
+                    icon: 'success',
+                    confirmButtonText: 'ตกลง'
                 });
-
-                const yearInput = document.getElementById('year');
-                if (yearInput) {
-                    yearInput.value = new Date().getFullYear() + 543;
-                }
-
-                const menuToggle = document.getElementById('menu-toggle');
-                if (menuToggle) {
-                    menuToggle.addEventListener('click', function() {
-                        document.getElementById('menu').classList.toggle('hidden');
-                    });
-                }
-
-                @if (session('success'))
-                    Swal.fire({
-                        title: 'สำเร็จ!',
-                        text: '{{ session('success') }}',
-                        icon: 'success'
-                    });
-                @endif
-
-                sumPeopleUMSC();
-                sumTimesUMSC();
-                sumPeopleLine();
-                sumTimesLine();
-            });
-
-            //UMSC
-            function sumPeopleUMSC() {
-                let total = 0;
-                document.querySelectorAll('.sum-source-people').forEach(el => {
-                    total += parseInt(el.value || 0);
-                });
-                document.getElementById('allUser').value = total;
-            }
-
-            function sumTimesUMSC() {
-                let total = 0;
-                document.querySelectorAll('.sum-source-times').forEach(el => {
-                    total += parseInt(el.value || 0);
-                });
-                document.getElementById('allUserTimes').value = total;
-            }
-
-            document.querySelectorAll('.sum-source-people').forEach(el => {
-                el.addEventListener('input', sumPeopleUMSC);
-            });
-            document.querySelectorAll('.sum-source-times').forEach(el => {
-                el.addEventListener('input', sumTimesUMSC);
-            });
-
-            //line OA
-            function sumPeopleLine() {
-                let total = 0;
-                document.querySelectorAll('.line-sum-source-people').forEach(el => {
-                    total += parseInt(el.value || 0);
-                });
-                document.getElementById('lineOATotalPeople').value = total;
-            }
-
-            function sumTimesLine() {
-                let total = 0;
-                document.querySelectorAll('.line-sum-source-times').forEach(el => {
-                    total += parseInt(el.value || 0);
-                });
-                document.getElementById('lineOATotalTimes').value = total;
-            }
-
-            document.querySelectorAll('.line-sum-source-people').forEach(el => {
-                el.addEventListener('input', sumPeopleLine);
-            });
-
-            document.querySelectorAll('.line-sum-source-times').forEach(el => {
-                el.addEventListener('input', sumTimesLine);
             });
         </script>
     @endpush
-</x-app-layout>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('hidden');
+        });
+    </script>
+
+    <script>
+        function sumPeople() {
+            let total = 0;
+            document.querySelectorAll('.sum-source-people').forEach(el => {
+                total += parseInt(el.value || 0);
+            });
+            document.getElementById('allUser').value = total;
+        }
+
+        function sumTimes() {
+            let total = 0;
+            document.querySelectorAll('.sum-source-times').forEach(el => {
+                total += parseInt(el.value || 0);
+            });
+            document.getElementById('allUserTimes').value = total;
+        }
+
+        document.querySelectorAll('.sum-source-people').forEach(el => {
+            el.addEventListener('input', sumPeople);
+        });
+        document.querySelectorAll('.sum-source-times').forEach(el => {
+            el.addEventListener('input', sumTimes);
+        });
+    </script>
+
+    <script>
+        function sumPeople() {
+            let total = 0;
+            document.querySelectorAll('.line-sum-source-people').forEach(el => {
+                total += parseInt(el.value || 0);
+            });
+            document.getElementById('lineOATotalPeople').value = total;
+        }
+
+        function sumTimes() {
+            let total = 0;
+            document.querySelectorAll('.line-sum-source-times').forEach(el => {
+                total += parseInt(el.value || 0);
+            });
+            document.getElementById('lineOATotalTimes').value = total;
+        }
+
+        document.querySelectorAll('.line-sum-source-people').forEach(el => {
+            el.addEventListener('input', sumPeople);
+        });
+
+        document.querySelectorAll('.line-sum-source-times').forEach(el => {
+            el.addEventListener('input', sumTimes);
+        });
+    </script>
+
+</x-app-layout>--}} 

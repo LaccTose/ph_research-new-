@@ -84,7 +84,8 @@
                         </label>
                         <textarea name="description"
                             placeholder="โปรดระบุรายละเอียดเพิ่มเติม หรือข้อมูลอื่นๆ ที่เกี่ยวข้อง"
-                            class="w-full text-sm text-gray-700 placeholder-gray-400 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600"></textarea>
+                            class="w-full text-sm text-gray-700 placeholder-gray-400 border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600 resize-none h-full min-h-[100px]">
+                        </textarea>
                     </div>
                 </fieldset>
 

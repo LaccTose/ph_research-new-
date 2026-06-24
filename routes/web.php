@@ -37,10 +37,22 @@ PRIMARY (งานปฐมภูมิ)
 */
 Route::prefix('primary')->group(function () {
 
-    Route::get('/dashboard', [HealthCenterController::class, 'dashboard'])
-        ->name('primary.dashboard');
+    Route::get('/', [HealthCenterController::class, 'dashboard'])
+        ->name('primary.index');
 
     Route::prefix('report')->group(function () {
+        Route::get('umsc_report-dashboard', [UMSCReportController::class, 'dashboard'])
+            ->name('umsc_report.dashboard');
+
+        Route::get('smc_report-dashboard', [SMCReportController::class, 'dashboard'])
+            ->name('smc_report.dashboard');
+
+        Route::get('pcu_report-dashboard', [PCUReportController::class, 'dashboard'])
+            ->name('pcu_report.dashboard');
+
+        Route::get('phcp_report-dashboard', [PHCPReportController::class, 'dashboard'])
+            ->name('phcp_report.dashboard');
+            
         Route::resource('dashboard', DashboardController::class)->only(['index']);
         Route::resource('umsc_report', UMSCReportController::class);
         Route::resource('smc_report', SMCReportController::class);

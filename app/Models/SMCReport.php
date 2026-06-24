@@ -10,12 +10,20 @@ class SMCReport extends Model
     protected $table = 'smc_reports';
 
     protected $fillable = [
-        'user_id',
-        'health_center_id',
-        'report_date',
-        'patient_count',
-        'activity',
-        'notes',
-    ];
+    'smc',
+    'month_year',
+    'smcWalkInCount',
+    'smcReferInCount',
+    'smcReferInUnitName',
+    'smcReferInUnitCount',
+    'teleconsultTotal',
+    'teleconsultHcToHc',
+    'teleconsultHcToHosp',
+    'referOutTotal',
+    'referOutWalkIn',
+    'referOutFromHc',
+    'referOutHospName',
+    'referOutHospCount',
+];
 
 }

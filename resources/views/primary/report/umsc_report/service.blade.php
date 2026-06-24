@@ -8,7 +8,7 @@
     <div class="py-2">
         <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
             <div class="flex flex-col gap-4 p-6 md:flex-row">
-                <div class="flex gap-4 p-6">
+                <div class="flex gap-4">
                     <a href="{{ route('dashboard.index') }}"
                         class="px-4 py-2 text-white bg-green-600 rounded-md hover:bg-green-700">
                         Dashboard
@@ -19,42 +19,41 @@
                     </a>
                 </div>
             </div>
-            <div class="p-6 text-gray-900">
-
-                <!-- Header -->
-                <div class="mb-8 text-center">
-                    <h1 class="text-2xl font-bold text-green-800 sm:text-2xl md:text-3xl">
-                        ศูนย์สนับสนุนบริการสุขภาพเวชศาสตร์เขตเมือง
-                    </h1>
-                    <p class="mt-2 text-lg text-green-700">
-                        (Urban Medicine Service Center : UMSC)
-                    </p>
-                </div>
-                {{-- <div class="search-box">
-                <input type="text" id="searchInput" placeholder="พิมพ์ชื่อศูนย์บริการหรือเขตเพื่อค้นหา...">
-            </div> --}}
-                <div class="flex justify-center">
-                    <div class="w-full max-w-sm min-w-[200px] relative mb-6">
-                        <div class="relative">
-                            <input type="text" id="searchInput"
-                                class="w-full py-2 pl-3 pr-10 text-base transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
-                                placeholder="พิมพ์ชื่อศูนย์บริการหรือเขต" />
-                            <button
-                                class="absolute right-1 top-1 rounded bg-slate-800 p-1.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                                    class="w-4 h-4">
-                                    <path fill-rule="evenodd"
-                                        d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </button>
+            <fieldset class="p-4  bg-white border-t-4 border-green-800 shadow-sm">
+            
+                    <div class="p-6 text-gray-900">
+                        <!-- Header -->
+                        <div class="mb-8 text-center">
+                            <h1 class="text-2xl font-bold text-green-800 sm:text-2xl md:text-3xl">
+                                ศูนย์สนับสนุนบริการสุขภาพเวชศาสตร์เขตเมือง
+                            </h1>
+                            <p class="mt-2 text-lg text-green-700">
+                                (Urban Medicine Service Center : UMSC)
+                            </p>
                         </div>
+                        <div class="flex justify-center">
+                            <div class="w-full max-w-sm min-w-[200px] relative mb-6">
+                                <div class="relative">
+                                    <input type="text" id="searchInput"
+                                        class="w-full py-2 pl-3 pr-10 text-base transition duration-300 bg-transparent border rounded-md shadow-sm placeholder:text-slate-400 text-slate-700 border-slate-200 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 focus:shadow"
+                                        placeholder="พิมพ์ชื่อศูนย์บริการหรือเขต" />
+                                    <button
+                                        class="absolute right-1 top-1 rounded bg-slate-800 p-1.5 border border-transparent text-center text-sm text-white transition-all shadow-sm hover:shadow focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                        type="button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                            class="w-4 h-4">
+                                            <path fill-rule="evenodd"
+                                                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container"></div>
+                        <footer></footer>
                     </div>
-                </div>
-                <div id="container"></div>
-                <footer></footer>
-            </div>
+            </fieldset>
         </div>
     </div>
 
@@ -115,8 +114,8 @@
             /* Hover */
             .region-header:hover {
                 /*background: #127135;
-                    border-color: #16a34a;
-                    color: #ffff;*/
+                        border-color: #16a34a;
+                        color: #ffff;*/
             }
 
             /* ไอคอนลูกศร */

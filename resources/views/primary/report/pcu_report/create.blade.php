@@ -123,18 +123,17 @@
                                     placeholder="ครั้ง">
                             </div>
                         </div>
-                            
-                        <div class="col-span-1">
+                    </div>
+
+                        <div class="mt-4 col-span-1">
                             <label for="ReferredDetails" class="block mb-1 text-sm text-gray-700">
                                 รายละเอียดการส่งต่อ
                             </label>
-                            <div class="relative w-full min-w-[200px]">
-                                <textarea class="h-full min-h-[100px] w-full resize-none border-gray-300 px-3 py-2 text-sm text-gray-700 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
-                                placeholder="รายละเอียดการส่งต่อเพิ่มเติม" id="RefferedDetails">{{ trim(old('referral_details')) }}</textarea>
-                            </div>
+                            <textarea class="min-h-[100px] w-full resize-none border-gray-300 px-3 py-2 text-sm text-gray-700 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600" 
+                                placeholder="รายละเอียดการส่งต่อเพิ่มเติม" id="RefferedDetails">{{ trim(old('referral_details')) }}
+                            </textarea>
                         </div>
 
-                    </div>
                 </fieldset>
                     
                 <fieldset class="p-6 mb-8 bg-white border-t-4 border-green-700 rounded-lg shadow-sm ">
