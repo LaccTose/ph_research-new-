@@ -340,13 +340,13 @@
                             <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">วันที่สิ้นสุด</label>
                             <input
                                 class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-100 border rounded-lg appearance-none focus:outline-none"
-                                type="text" x-model="" readonly>
+                                type="text" x-model="event_end_date" readonly>
                         </div>
                         <div class="mb-4">
                             <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">เวลาเริ่มต้น</label>
                             <input
                                 class="w-full px-4 py-2 leading-tight text-gray-700 bg-gray-100 border rounded-lg appearance-none focus:outline-none"
-                                type="text" x-model="" readonly>
+                                type="text" x-model="event_start_time" readonly>
                         </div>
                         <div class="mb-4">
                             <label class="block mb-1 text-sm font-bold tracking-wide text-gray-800">เวลาสิ้นสุด</label>
@@ -367,15 +367,14 @@
                             <div>
                                 @if(auth()->user() && auth()->user()->is_admin) 
                                     <div class="flex gap-2">
-                                        <button type="button" onclick="editBooking()" 
+                                        <a :href="'/booking/' + selectedEvent.id + '/edit'"
                                             class="px-4 py-2 text-white transition bg-yellow-500 rounded-lg shadow-sm hover:bg-yellow-600">
                                             แก้ไข
-                                        </button>
-                                        <form id="deleteForm" method="POST" onsubmit="return confirm('ยืนยันการลบการจองนี้?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" 
-                                                class="px-4 py-2 text-white transition bg-red-500 rounded-lg shadow-sm hover:bg-red-600">
+                                        </a>
+                                       <form :action="deleteUrl" method="POST" onsubmit="return confirm('ยืนยันการลบการจองนี้?')">
+                                        @csrf
+                                        @method('DELETE')
+                                            <button type="submit" class="px-4 py-2 text-white transition bg-red-500 rounded-lg shadow-sm hover:bg-red-600">
                                                 ลบการจอง
                                             </button>
                                         </form>
@@ -576,6 +575,7 @@
                     showEventDetail(event) {
                         this.selectedEvent = event;
                         this.event_title = event.title;
+                        this.deleteUrl = `/booking/${event.id}`;
 
                         // ฟอร์แมตวันที่แบบไทย
                         this.event_date = new Date(event.start_at).toLocaleDateString('th-TH', {
@@ -584,8 +584,16 @@
                             year: 'numeric'
                         });
 
+                        this.event_end_date = new Date(event.end_at).toLocaleDateString('th-TH', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+
                         this.event_description = event.description || 'ไม่พบรายละเอียดเพิ่มเติม';
                         this.openEventModal = true;
+                        this.event_start_time = new Date(event.start_at).toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'});
+                        this.event_end_time = new Date(event.end_at).toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'});
                     },
 
                     getNoOfDays() {

@@ -250,30 +250,30 @@
                                 </div>
 
                                 <div class="w-1/2">
-                                    <input type="number" id="smcReferInUnitCount[]" name="smcReferInUnitCount[]"
-                                        value="{{ old('smcReferInUnitCount', 0) }}"
+                                    <input type="number" name="smcReferInUnitCount[]"
+                                        value="{{ old('smcReferInUnitCount.0', 0) }}"
                                         class="w-full p-2 text-sm border rounded-md shadow-sm
                                     {{ $errors->has('smcReferInUnitCount') ? 'border-red-500' : 'border-gray-300' }}
                                     focus:ring-green-600 focus:border-green-600"
                                         placeholder="ครั้ง" min="0">
 
-                                    @error('smcReferInUnitCount')
+                                    {{--@error('smcReferInUnitCount')
                                         <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
-                                    @enderror
+                                    @enderror--}}
                                 </div>
 
                                 <button type="button" onclick="removeRow(this)"
-                                    class="p-2 text-red-500 hover:text-red-700 focus:outline-none btn-delete hidden"
+                                    class="hidden p-2 text-red-500 hover:text-red-700 focus:outline-none btn-delete"
                                     title="ลบแถวนี้ ">
                                     <i class="fa-solid fa-trash"></i>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                     </svg>
                                 </button>
 
-                                <div class="flex items-center gap-1 flex-shrink-0 mt-0.5 min-w-[100px]">
+                                <div class="flex items-center gap-1 flex-shrink-0 mt-0.5 min-w-[100px] btn-add-container">
                                     <button type="button" onclick="addRow()"
                                         class="flex items-center p-2 text-sm font-medium text-green-600 transition-colors rounded-md hover:bg-green-50">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
@@ -341,7 +341,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col">
+                    {{--<div class="flex flex-col">
                         <label for="referOutTotal" class="block mb-1 text-sm text-gray-700">
                             4. จำนวนผู้รับบริการที่ต้องส่งรักษาต่อ รพ. (Refer Out)
                         </label>
@@ -394,7 +394,7 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
 
                     {{--<div class="flex flex-col">
                         <label for="referOutHospName" class="block mb-1 text-sm text-gray-700">
@@ -430,168 +430,202 @@
                         </div>
                     </div>--}}
 
-                     <div class="flex flex-col w-full">
-                        <label class="block mb-1 text-sm text-gray-700">จำแนกตามหน่วยบริการ</label>
+                     <div class="flex flex-col">
+    <label for="smcReferOutCount" class="block mb-1 text-sm text-gray-700">
+        4. จำนวนผู้รับบริการที่ต้องส่งรักษาต่อ (Refer Out)
+    </label>
+    <div class="flex">
+        <input type="number" inputmode="numeric" name="smcReferOutCount" id="smcReferOutCount" value="{{ old('smcReferOutCount', 0) }}" class="w-full p-2 text-sm text-gray-700 bg-gray-100 border rounded-md shadow-sm lg:w-1/2" min="0" readonly>
+    </div>
+</div>
 
-                        <div id="hospital-list" class="space-y-2">
-                            <div class="flex items-start gap-2 hospital-row">
-                                <div class="flex-1">
-                                    <select name="smcReferInUnit[]" required
-                                        class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm focus:ring-green-600 focus:border-green-600">
-                                        <option value="">-- ตัวเลือกสถานพยาบาล --</option>
-                                        @foreach ([
-                                                    'ศูนย์บริการสาธารณสุข 1 สะพานมอญ',
-                                                    'ศูนย์บริการสาธารณสุข 2 วัดมักกะสัน',
-                                                    'ศูนย์บริการสาธารณสุข 3 บางซื่อ',
-                                                    'ศูนย์บริการสาธารณสุข 4 ดินแดง',
-                                                    'ศูนย์บริการสาธารณสุข 5 จุฬาลงกรณ์',
-                                                    'ศูนย์บริการสาธารณสุข 6 สโมสรวัฒนธรรมหญิง',
-                                                    'ศูนย์บริการสาธารณสุข 7 บุญมีปุรุราชรังสรรค์',
-                                                    'ศูนย์บริการสาธารณสุข 8 บุญรอด รุ่งเรือง',
-                                                    'ศูนย์บริการสาธารณสุข 9 ประชาธิปไตย',
-                                                    'ศูนย์บริการสาธารณสุข 10 สุขุมวิท',
-                                                    'ศูนย์บริการสาธารณสุข 11 ประดิพัทธ์',
-                                                    'ศูนย์บริการสาธารณสุข 12 จันทร์เที่ยง เนตรวิเศษ',
-                                                    'ศูนย์บริการสาธารณสุข 13 ไมตรีวานิช',
-                                                    'ศูนย์บริการสาธารณสุข 14 แก้ว สีบุญเรือง',
-                                                    'ศูนย์บริการสาธารณสุข 15 ลาดพร้าว',
-                                                    'ศูนย์บริการสาธารณสุข 16 ลุมพินี',
-                                                    'ศูนย์บริการสาธารณสุข 17 ประชานิเวศน์',
-                                                    'ศูนย์บริการสาธารณสุข 18 มงคล-วอน วังตาล',
-                                                    'ศูนย์บริการสาธารณสุข 19 วงศ์สว่าง',
-                                                    'ศูนย์บริการสาธารณสุข 20 ป้อมปราบศัตรูพ่าย',
-                                                    'ศูนย์บริการสาธารณสุข 21 วัดธาตุทอง',
-                                                    'ศูนย์บริการสาธารณสุข 22 วัดปากบ่อ',
-                                                    'ศูนย์บริการสาธารณสุข 23 สี่พระยา',
-                                                    'ศูนย์บริการสาธารณสุข 24 บางเขน',
-                                                    'ศูนย์บริการสาธารณสุข 25 ห้วยขวาง',
-                                                    'ศูนย์บริการสาธารณสุข 26 เจ้าคุณพระประยุรวงศ์',
-                                                    'ศูนย์บริการสาธารณสุข 27 จันทร์ฉิมไพบูลย์',
-                                                    'ศูนย์บริการสาธารณสุข 28 กรุงธนบุรี',
-                                                    'ศูนย์บริการสาธารณสุข 29 ช่วง นุชเนตร',
-                                                    'ศูนย์บริการสาธารณสุข 30 วัดเจ้าอาม',
-                                                    'ศูนย์บริการสาธารณสุข 31 เอิบ-จิตร ทังสุบุตร',
-                                                    'ศูนย์บริการสาธารณสุข 32 มาริษ ตินตมุสิก',
-                                                    'ศูนย์บริการสาธารณสุข 33 วัดหงส์รัตนาราม',
-                                                    'ศูนย์บริการสาธารณสุข 34 โพธิ์ศรี',
-                                                    'ศูนย์บริการสาธารณสุข 35 หัวหมาก',
-                                                    'ศูนย์บริการสาธารณสุข 36 บุคคโล',
-                                                    'ศูนย์บริการสาธารณสุข 37 ประสงค์-สุดสาคร',
-                                                    'ศูนย์บริการสาธารณสุข 38 จี๊ด-ทองคำบำเพ็ญ',
-                                                    'ศูนย์บริการสาธารณสุข 39 ราษฎร์บูรณะ',
-                                                    'ศูนย์บริการสาธารณสุข 40 บางแค',
-                                                    'ศูนย์บริการสาธารณสุข 41 คลองเตย',
-                                                    'ศูนย์บริการสาธารณสุข 42 ถนอม ทองสิมา',
-                                                    'ศูนย์บริการสาธารณสุข 43 มีนบุรี',
-                                                    'ศูนย์บริการสาธารณสุข 44 ลำผักชี หนองจอก',
-                                                    'ศูนย์บริการสาธารณสุข 45 ร่มเกล้า ลาดกระบัง',
-                                                    'ศูนย์บริการสาธารณสุข 46 กันตารัติอุทิศ',
-                                                    'ศูนย์บริการสาธารณสุข 47 คลองขวาง',
-                                                    'ศูนย์บริการสาธารณสุข 48 นาควัชระ อุทิศ',
-                                                    'ศูนย์บริการสาธารณสุข 49 วัดชัยพฤกษมาลา',
-                                                    'ศูนย์บริการสาธารณสุข 50 บึงกุ่ม',
-                                                    'ศูนย์บริการสาธารณสุข 51 จตุจักร',
-                                                    'ศูนย์บริการสาธารณสุข 52 สามเสนนอก',
-                                                    'ศูนย์บริการสาธารณสุข 53 ทุ่งสองห้อง',
-                                                    'ศูนย์บริการสาธารณสุข 54 ทัศน์เอี่ยม',
-                                                    'ศูนย์บริการสาธารณสุข 55 เตชะสัมพันธ์',
-                                                    'ศูนย์บริการสาธารณสุข 56 ทับเจริญ',
-                                                    'ศูนย์บริการสาธารณสุข 57 บุญเรือง ล้ำเลิศ',
-                                                    'ศูนย์บริการสาธารณสุข 58 ล้อม-พิมเสน ฟักอุดม',
-                                                    'ศูนย์บริการสาธารณสุข 59 ทุ่งครุ',
-                                                    'ศูนย์บริการสาธารณสุข 60 รสสุคนธ์ มโนชญากร',
-                                                    'ศูนย์บริการสาธารณสุข 61 สังวาลย์ ทัสนารมย์',
-                                                    'ศูนย์บริการสาธารณสุข 62 ตวงรัชฎ์ ศศะนาวิน',
-                                                    'ศูนย์บริการสาธารณสุข 63 สมาคมแต้จิ๋วแห่งประเทศไทย',
-                                                    'ศูนย์บริการสาธารณสุข 64 คลองสามวา',
-                                                    'ศูนย์บริการสาธารณสุข 65 รักษาศุข บางบอน',
-                                                    'ศูนย์บริการสาธารณสุข 66 ตำหนักพระแม่กวนอิม',
-                                                    'ศูนย์บริการสาธารณสุข 67 ทวีวัฒนา',
-                                                    'ศูนย์บริการสาธารณสุข 68 สะพานสูง',
-                                                    'ศูนย์บริการสาธารณสุข 69 คันนายาว',
-                                                    'โรงพยาบาลกลาง',
-                                                    'โรงพยาบาลตากสิน',
-                                                    'โรงพยาบาลเจริญกรุงประชารักษ์',
-                                                    'โรงพยาบาลหลวงพ่อทวีศักดิ์ ชุตินฺธโร อุทิศ',
-                                                    'โรงพยาบาลเวชการุณย์รัศมิ์',
-                                                    'โรงพยาบาลนคราภิบาล',
-                                                    'โรงพยาบาลราชพิพัฒน์',
-                                                    'โรงพยาบาลสิรินธร',
-                                                    'โรงพยาบาลผู้สูงอายุบางขุนเทียน',
-                                                    'โรงพยาบาลรัตนประชารักษ์',
-                                                    'โรงพยาบาลบางนากรุงเทพมหานคร',
-                                                    'ศูนย์บริการการแพทย์ฉุกเฉิน กรุงเทพมหานคร (ศูนย์เอราวัณ)',
-                                                    'โรงพยาบาลวชิรโรงพยาบาล คณะแพทยศาสตร์วชิรพยาบาล มหาวิทยาลัยนวมินทราธิราช',
-                                                    'โรงพยาบาลเลิดสิน',
-                                                    'โรงพยาบาลราชวิถี',
-                                                    'โรงพยาบาลพระมงกุฎเกล้า',
-                                                    'โรงพยาบาลภูมิพลอดุลยเดช',
-                                                    'โรงพยาบาลศิริราช',
-                                                    'โรงพยาบาลจุฬาลงกรณ์',
-                                                    'สถาบันสุขภาพเด็กแห่งชาติมหาราชินี',
-                                                    'โรงพยาบาลรามาธิบดี',
-                                                    'สถาบันราชานุกูล',
-                                                    'โรงพยาบาลยุวประสาทไวทโยปถัมภ์',
-                                                    'โรงพยาบาลพระนั่งเกล้า',
-                                                    'โรงพยาบาลเมตตาประชารักษ์ (วัดไร่ขิง)',
-                                                    'โรงพยาบาลบุรีรัมย์',
-                                                    'โรงพยาบาลเปาโล เกษตร',
-                                                    'โรงพยาบาลเปาโล โชคชัย 4',
-                                                    'โรงพยาบาลเกษมราษฏร์ บางแค',
-                                                    'โรงพยาบาลเกษมราษฏร์ รามคำแหง',
-                                                    'โรงพยาบาลกล้วยน้ำไท',
-                                                    'โรงพยาบาลมงกุฏวัฒนะ',
-                                                    'โรงพยาบาลส่งเสริมสุขภาพตำบลบางกระเจ้า',
-                                                    'โรงพยาบาลส่งเสริมสุขภาพตำบลหินโงม',
-                                                    'Swing คลินิก',
-                                                    'คลินิกเวชกรรมกล้วยน้ำไท',
-                                                    'คลินิกเวชกรรมอารีรักษ์',
-                                                    'พริบตาคลินิก',
-                                                ] as $dept)
-                                            <option value="{{ $dept }}">{{ $dept }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+<div class="flex flex-col">
+    <label for="referOutWalkIn" class="block mt-3 text-sm text-gray-700 underline">
+        รายละเอียดการส่งรักษาต่อ รพ.
+    </label>
+</div>
+<div class="flex flex-col">
+    <div class="flex gap-2">
+        <div class="w-1/2">
+            <label for="referOutWalkIn" class="block mb-1 text-sm text-gray-700">
+                ผู้ป่วย Walk In
+            </label>
+            <input type="number" id="referOutWalkIn" name="referOutWalkIn"
+                value="{{ old('referOutWalkIn', 0) }}"
+                class="w-full p-2 text-sm border rounded-md shadow-sm
+                {{ $errors->has('referOutWalkIn') ? 'border-red-500' : 'border-gray-300' }}
+                focus:ring-green-600 focus:border-green-600"
+                placeholder="ครั้ง" min="0">
 
-                                <div class="w-1/2">
-                                    <input type="number" id="smcReferInUnitCount[]" name="smcReferInUnitCount[]"
-                                        value="{{ old('smcReferInUnitCount', 0) }}"
-                                        class="w-full p-2 text-sm border rounded-md shadow-sm
-                                    {{ $errors->has('smcReferInUnitCount') ? 'border-red-500' : 'border-gray-300' }}
-                                    focus:ring-green-600 focus:border-green-600"
-                                        placeholder="ครั้ง" min="0">
+                    @error('referOutWalkIn')
+                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                    @enderror
+        </div>
 
-                                    @error('smcReferInUnitCount')
-                                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
-                                    @enderror
-                                </div>
+        <div class="w-1/2">
+            <label for="referOutFromHc" class="block mb-1 text-sm text-gray-700">
+                ผู้ป่วยที่รับการส่งต่อจาก ศบส. (Refer In)
+            </label>
+            <input type="number" id="referOutFromHc" name="referOutFromHc"
+                value="{{ old('referOutFromHc', 0) }}"
+                class="w-full p-2 text-sm border rounded-md shadow-sm
+                {{ $errors->has('referOutFromHc') ? 'border-red-500' : 'border-gray-300' }}
+                focus:ring-green-600 focus:border-green-600"
+                placeholder="ครั้ง" min="0">
 
-                                <button type="button" onclick="removeRow(this)"
-                                    class="p-2 text-red-500 hover:text-red-700 focus:outline-none btn-delete hidden"
-                                    title="ลบแถวนี้ ">
-                                    <i class="fa-solid fa-trash"></i>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                    </svg>
-                                </button>
+                    @error('referOutFromHc')
+                        <p class="mt-1 text-sm text-red-500">{{ $message }}</p>
+                    @enderror
+        </div>
+    </div>
+</div>
 
-                                <div class="flex items-center gap-1 flex-shrink-0 mt-0.5 min-w-[100px]">
-                                    <button type="button" onclick="addRow()"
-                                        class="flex items-center p-2 text-sm font-medium text-green-600 transition-colors rounded-md hover:bg-green-50">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M12 4v16m8-8H4" />
-                                        </svg>
-                                        <span class="hidden ml-1 sm:inline">เพิ่มแถว</span>
-                                    </button>
-                                </div>
+<div class="flex flex-col w-full mt-4">
+    <label class="block mb-1 text-sm text-gray-700">จำแนกตามหน่วยบริการ (Refer Out)</label>
 
-                            </div>
-                        </div>
-                    </div>
+    <div id="hospital-out-list" class="space-y-2">
+        <div class="flex items-start gap-2 hospital-row">
+            <div class="flex-1">
+                <select name="smcReferOutUnit[]" required class="w-full p-2 text-sm text-gray-700 border border-gray-300 rounded-md shadow-sm">
+                    <option value="">-- ตัวเลือกสถานพยาบาล --</option>
+                    @foreach ([
+                                    'ศูนย์บริการสาธารณสุข 1 สะพานมอญ',
+                                    'ศูนย์บริการสาธารณสุข 2 วัดมักกะสัน',
+                                    'ศูนย์บริการสาธารณสุข 3 บางซื่อ',
+                                    'ศูนย์บริการสาธารณสุข 4 ดินแดง',
+                                    'ศูนย์บริการสาธารณสุข 5 จุฬาลงกรณ์',
+                                    'ศูนย์บริการสาธารณสุข 6 สโมสรวัฒนธรรมหญิง',
+                                    'ศูนย์บริการสาธารณสุข 7 บุญมีปุรุราชรังสรรค์',
+                                    'ศูนย์บริการสาธารณสุข 8 บุญรอด รุ่งเรือง',
+                                    'ศูนย์บริการสาธารณสุข 9 ประชาธิปไตย',
+                                    'ศูนย์บริการสาธารณสุข 10 สุขุมวิท',
+                                    'ศูนย์บริการสาธารณสุข 11 ประดิพัทธ์',
+                                    'ศูนย์บริการสาธารณสุข 12 จันทร์เที่ยง เนตรวิเศษ',
+                                    'ศูนย์บริการสาธารณสุข 13 ไมตรีวานิช',
+                                    'ศูนย์บริการสาธารณสุข 14 แก้ว สีบุญเรือง',
+                                    'ศูนย์บริการสาธารณสุข 15 ลาดพร้าว',
+                                    'ศูนย์บริการสาธารณสุข 16 ลุมพินี',
+                                    'ศูนย์บริการสาธารณสุข 17 ประชานิเวศน์',
+                                    'ศูนย์บริการสาธารณสุข 18 มงคล-วอน วังตาล',
+                                    'ศูนย์บริการสาธารณสุข 19 วงศ์สว่าง',
+                                    'ศูนย์บริการสาธารณสุข 20 ป้อมปราบศัตรูพ่าย',
+                                    'ศูนย์บริการสาธารณสุข 21 วัดธาตุทอง',
+                                    'ศูนย์บริการสาธารณสุข 22 วัดปากบ่อ',
+                                    'ศูนย์บริการสาธารณสุข 23 สี่พระยา',
+                                    'ศูนย์บริการสาธารณสุข 24 บางเขน',
+                                    'ศูนย์บริการสาธารณสุข 25 ห้วยขวาง',
+                                    'ศูนย์บริการสาธารณสุข 26 เจ้าคุณพระประยุรวงศ์',
+                                    'ศูนย์บริการสาธารณสุข 27 จันทร์ฉิมไพบูลย์',
+                                    'ศูนย์บริการสาธารณสุข 28 กรุงธนบุรี',
+                                    'ศูนย์บริการสาธารณสุข 29 ช่วง นุชเนตร',
+                                    'ศูนย์บริการสาธารณสุข 30 วัดเจ้าอาม',
+                                    'ศูนย์บริการสาธารณสุข 31 เอิบ-จิตร ทังสุบุตร',
+                                    'ศูนย์บริการสาธารณสุข 32 มาริษ ตินตมุสิก',
+                                    'ศูนย์บริการสาธารณสุข 33 วัดหงส์รัตนาราม',
+                                    'ศูนย์บริการสาธารณสุข 34 โพธิ์ศรี',
+                                    'ศูนย์บริการสาธารณสุข 35 หัวหมาก',
+                                    'ศูนย์บริการสาธารณสุข 36 บุคคโล',
+                                    'ศูนย์บริการสาธารณสุข 37 ประสงค์-สุดสาคร',
+                                    'ศูนย์บริการสาธารณสุข 38 จี๊ด-ทองคำบำเพ็ญ',
+                                    'ศูนย์บริการสาธารณสุข 39 ราษฎร์บูรณะ',
+                                    'ศูนย์บริการสาธารณสุข 40 บางแค',
+                                    'ศูนย์บริการสาธารณสุข 41 คลองเตย',
+                                    'ศูนย์บริการสาธารณสุข 42 ถนอม ทองสิมา',
+                                    'ศูนย์บริการสาธารณสุข 43 มีนบุรี',
+                                    'ศูนย์บริการสาธารณสุข 44 ลำผักชี หนองจอก',
+                                    'ศูนย์บริการสาธารณสุข 45 ร่มเกล้า ลาดกระบัง',
+                                    'ศูนย์บริการสาธารณสุข 46 กันตารัติอุทิศ',
+                                    'ศูนย์บริการสาธารณสุข 47 คลองขวาง',
+                                    'ศูนย์บริการสาธารณสุข 48 นาควัชระ อุทิศ',
+                                    'ศูนย์บริการสาธารณสุข 49 วัดชัยพฤกษมาลา',
+                                    'ศูนย์บริการสาธารณสุข 50 บึงกุ่ม',
+                                    'ศูนย์บริการสาธารณสุข 51 จตุจักร',
+                                    'ศูนย์บริการสาธารณสุข 52 สามเสนนอก',
+                                    'ศูนย์บริการสาธารณสุข 53 ทุ่งสองห้อง',
+                                    'ศูนย์บริการสาธารณสุข 54 ทัศน์เอี่ยม',
+                                    'ศูนย์บริการสาธารณสุข 55 เตชะสัมพันธ์',
+                                    'ศูนย์บริการสาธารณสุข 56 ทับเจริญ',
+                                    'ศูนย์บริการสาธารณสุข 57 บุญเรือง ล้ำเลิศ',
+                                    'ศูนย์บริการสาธารณสุข 58 ล้อม-พิมเสน ฟักอุดม',
+                                    'ศูนย์บริการสาธารณสุข 59 ทุ่งครุ',
+                                    'ศูนย์บริการสาธารณสุข 60 รสสุคนธ์ มโนชญากร',
+                                    'ศูนย์บริการสาธารณสุข 61 สังวาลย์ ทัสนารมย์',
+                                    'ศูนย์บริการสาธารณสุข 62 ตวงรัชฎ์ ศศะนาวิน',
+                                    'ศูนย์บริการสาธารณสุข 63 สมาคมแต้จิ๋วแห่งประเทศไทย',
+                                    'ศูนย์บริการสาธารณสุข 64 คลองสามวา',
+                                    'ศูนย์บริการสาธารณสุข 65 รักษาศุข บางบอน',
+                                    'ศูนย์บริการสาธารณสุข 66 ตำหนักพระแม่กวนอิม',
+                                    'ศูนย์บริการสาธารณสุข 67 ทวีวัฒนา',
+                                    'ศูนย์บริการสาธารณสุข 68 สะพานสูง',
+                                    'ศูนย์บริการสาธารณสุข 69 คันนายาว',
+                                    'โรงพยาบาลกลาง',
+                                    'โรงพยาบาลตากสิน',
+                                    'โรงพยาบาลเจริญกรุงประชารักษ์',
+                                    'โรงพยาบาลหลวงพ่อทวีศักดิ์ ชุตินฺธโร อุทิศ',
+                                    'โรงพยาบาลเวชการุณย์รัศมิ์',
+                                    'โรงพยาบาลนคราภิบาล',
+                                    'โรงพยาบาลราชพิพัฒน์',
+                                    'โรงพยาบาลสิรินธร',
+                                    'โรงพยาบาลผู้สูงอายุบางขุนเทียน',
+                                    'โรงพยาบาลรัตนประชารักษ์',
+                                    'โรงพยาบาลบางนากรุงเทพมหานคร',
+                                    'ศูนย์บริการการแพทย์ฉุกเฉิน กรุงเทพมหานคร (ศูนย์เอราวัณ)',
+                                    'โรงพยาบาลวชิรโรงพยาบาล คณะแพทยศาสตร์วชิรพยาบาล มหาวิทยาลัยนวมินทราธิราช',
+                                    'โรงพยาบาลเลิดสิน',
+                                    'โรงพยาบาลราชวิถี',
+                                    'โรงพยาบาลพระมงกุฎเกล้า',
+                                    'โรงพยาบาลภูมิพลอดุลยเดช',
+                                    'โรงพยาบาลศิริราช',
+                                    'โรงพยาบาลจุฬาลงกรณ์',
+                                    'สถาบันสุขภาพเด็กแห่งชาติมหาราชินี',
+                                    'โรงพยาบาลรามาธิบดี',
+                                    'สถาบันราชานุกูล',
+                                    'โรงพยาบาลยุวประสาทไวทโยปถัมภ์',
+                                    'โรงพยาบาลพระนั่งเกล้า',
+                                    'โรงพยาบาลเมตตาประชารักษ์ (วัดไร่ขิง)',
+                                    'โรงพยาบาลบุรีรัมย์',
+                                    'โรงพยาบาลเปาโล เกษตร',
+                                    'โรงพยาบาลเปาโล โชคชัย 4',
+                                    'โรงพยาบาลเกษมราษฏร์ บางแค',
+                                    'โรงพยาบาลเกษมราษฏร์ รามคำแหง',
+                                    'โรงพยาบาลกล้วยน้ำไท',
+                                    'โรงพยาบาลมงกุฏวัฒนะ',
+                                    'โรงพยาบาลส่งเสริมสุขภาพตำบลบางกระเจ้า',
+                                    'โรงพยาบาลส่งเสริมสุขภาพตำบลหินโงม',
+                                    'Swing คลินิก',
+                                    'คลินิกเวชกรรมกล้วยน้ำไท',
+                                    'คลินิกเวชกรรมอารีรักษ์',
+                                    'พริบตาคลินิก',
+                                ] as $dept)
+                            <option value="{{ $dept }}">{{ $dept }}</option>
+                        @endforeach
+                </select>
+            </div>
+
+            <div class="w-1/2">
+                <input type="number" name="smcReferOutUnitCount[]" value="{{ old('smcReferOutUnitCount.0', 0) }}" class="w-full p-2 text-sm border border-gray-300 rounded-md shadow-sm" min="0">
+            </div>
+
+            <button type="button" onclick="removeGenericRow(this, 'hospital-out-list', 'smcReferOutUnitCount[]', 'smcReferOutCount')"
+                class="hidden p-2 text-red-500 hover:text-red-700 focus:outline-none btn-delete" title="ลบแถวนี้">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+            </button>
+
+            <div class="flex items-center gap-1 flex-shrink-0 mt-0.5 min-w-[100px] btn-add-container">
+                <button type="button" onclick="addGenericRow('hospital-out-list', 'smcReferOutUnit[]', 'smcReferOutUnitCount[]', 'smcReferOutCount')"
+                    class="flex items-center p-2 text-sm font-medium text-green-600 transition-colors rounded-md hover:bg-green-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    <span class="hidden ml-1 sm:inline">เพิ่มแถว</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
             </fieldset>
 
             <div class="flex items-center justify-between mt-4">
@@ -782,6 +816,13 @@
                         }
                     }
                 });
+
+                // ดักจับการเปลี่ยนค่าในช่องกรอกจำนวนผู้รับบริการ Refer In เพื่อคำนวณยอดรวมใหม่
+                hospitalContainer.addEventListener('input', function(e){
+                    if(e.target && e.target.matches('[name="smcReferInUnitCount[]"]')){
+                        updateReferInTotal();
+                    }
+                });
             }
 
             function updateReferInTotal() {
@@ -802,8 +843,8 @@
                 }
             }
 
-            // 2. ใช้ Event Delegation ดักฟังการพิมพ์ที่ Container หลัก
-                const hospitalList = document.getElementById('hospital-list');
+            // 2. ใช้ Event Delegation ดักการพิมพ์ที่ Container หลัก
+                /*const hospitalList = document.getElementById('hospital-list');
                 if (hospitalList) {
                     hospitalList.addEventListener('input', function(e) {
                         // ถ้าสิ่งที่ผู้ใช้กำลังพิมพ์อยู่ มี name ตรงกับช่องจำนวน ให้คำนวณใหม่ทันที
@@ -811,7 +852,7 @@
                             updateReferInTotal();
                         }
                     });
-                }
+                }*/
 
             function addRow() {
                 const container = document.getElementById('hospital-list');
@@ -863,48 +904,31 @@
                     deleteBtn.classList.remove('hidden');
                 }
 
+               const oldAddBtn = lastRow.querySelector('.btn-add-container');
+               if(oldAddBtn) oldAddBtn.classList.add('hidden');
+
                 container.appendChild(newRow);
-            }
-
-            //Reset ฟอร์มและลบแถวเกินเมื่อยกเลิก
-            const btnCancel = document.getElementById('btn-cancel');
-            if (btnCancel) {
-                btnCancel.addEventListener('click', function(e) {
-                    // ดึงแถวสถานพยาบาลทั้งหมดมาตรวจสอบ
-                    const container = document.getElementById('hospital-list');
-                    if (container) {
-                        const rows = container.querySelectorAll('.hospital-row');
-                        
-                        // วนลูปเริ่มลบตั้งแต่แถวที่ 2 เป็นต้นไป (อินเด็กซ์ที่ 1 ขึ้นไป)
-                        for (let i = 1; i < rows.length; i++) {
-                            rows[i].remove();
-                        }
-                    }
-
-                    // ใช้ setTimeout หน่วงเวลาเสี้ยววินาที เพื่อรอให้เบราว์เซอร์เคลียร์ค่าใน Input สำเร็จก่อน
-                    setTimeout(() => {
-                        // สั่งให้คำนวณยอดรวมใหม่ (ยอดรวมในช่องสีเทาจะดีดกลับเป็น 0 อัตโนมัติ)
-                        if (typeof updateReferInTotal === "function") {
-                            updateReferInTotal();
-                        }
-                    }, 50); 
-                });
+                updateReferInTotal(); // เรียกฟังก์ชันอัปเดตยอดรวมทันทีหลังเพิ่มแถว
             }
 
             function removeRow(btn) {
                 const container = document.getElementById('hospital-list');
-                const rows = container.querySelectorAll('.hospital-row');
                 const currentRow = btn.closest('.hospital-row');
-
-                if (rows.length > 1 && currentRow !== rows[0]) {
-                    currentRow.remove();
-
-                    //เรียกฟังก์ชันอัปเดตยอดรวม
-                    if (typeof updateReferInTotal === "function") {
-                        updateReferInTotal();
+                const rows = container.querySelectorAll('.hospital-row');
+                
+                if (rows.length > 1){
+                    if(currentRow === rows[rows.length - 1]){
+                        const previousRow = rows[rows.length - 2];
+                        const prevAddBtn = previousRow.querySelector('.btn-add-container');
+                        if(prevAddBtn) prevAddBtn.classList.remove('hidden');
                     }
+                    currentRow.remove();
+                    updateReferInTotal(); // เรียกฟังก์ชันอัปเดต
                 }
             }
+
+           
+
         </script>
     @endpush
 </x-app-layout>
